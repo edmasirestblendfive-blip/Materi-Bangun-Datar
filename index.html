@@ -1,0 +1,3185 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GEOMETRY LEARNING – Belajar Bangun Datar (SMP Kelas 7)</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Plus Jakarta Sans & Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Nunito"', 'sans-serif'],
+          },
+          colors: {
+            brandBlue: {
+              50: '#EFF6FF',
+              100: '#DBEAFE',
+              200: '#BFDBFE',
+              500: '#3B82F6',
+              600: '#2563EB',
+              700: '#1D4ED8',
+            },
+            brandPurple: {
+              50: '#FAF5FF',
+              100: '#F3E8FF',
+              200: '#DDD6FE',
+              300: '#C4B5FD',
+              500: '#8B5CF6',
+              600: '#7C3AED',
+              700: '#6D28D9',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(135deg, #EFF6FF 0%, #FAF5FF 38%, #FFF1F2 72%, #ECFDF5 100%);
+      background-attachment: fixed;
+      color: #1E293B;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* Floating animations for Hero Shapes & Background Ornaments */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(4deg); }
+    }
+    @keyframes floatReverse {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(10px) rotate(-4deg); }
+    }
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.95) translateY(8px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .animate-float {
+      animation: floatSlow 4.5s ease-in-out infinite;
+    }
+    .animate-float-delay {
+      animation: floatReverse 5s ease-in-out 0.8s infinite;
+    }
+    .animate-pop {
+      animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Smooth SVG transition for interactive proofs */
+    .proof-svg * {
+      transition: all 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Custom Scrollbar for horizontal pills */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Colorful Formula Box Styling */
+    .formula-card {
+      background: linear-gradient(135deg, #FEF3C7 0%, #DBEAFE 50%, #F3E8FF 100%);
+      border: 2px solid #FCD34D;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-brandPurple-200 selection:text-brandPurple-700 relative">
+
+  <!-- DECORATIVE FLOATING COLORFUL GEOMETRIC BACKGROUND ORNAMENTS -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
+    <!-- Top Left Sunburst Circle -->
+    <div class="animate-float absolute -top-12 -left-12 w-56 h-56 rounded-full bg-gradient-to-br from-sky-300/30 to-indigo-300/20 blur-xl"></div>
+    <!-- Top Right Pink/Purple Blob -->
+    <div class="animate-float-delay absolute top-24 -right-16 w-64 h-64 rounded-full bg-gradient-to-br from-fuchsia-300/25 to-purple-300/25 blur-xl"></div>
+    <!-- Bottom Left Mint/Emerald Glow -->
+    <div class="animate-float-delay absolute bottom-16 left-8 w-60 h-60 rounded-full bg-gradient-to-tr from-emerald-300/25 to-teal-200/25 blur-xl"></div>
+    <!-- Bottom Right Warm Amber Glow -->
+    <div class="animate-float absolute -bottom-16 right-10 w-72 h-72 rounded-full bg-gradient-to-tl from-amber-300/25 to-orange-200/20 blur-xl"></div>
+
+    <!-- Floating SVG Geometric Shapes -->
+    <svg class="animate-float absolute top-28 left-[6%] w-10 h-10 text-amber-400/45" viewBox="0 0 40 40" fill="currentColor">
+      <polygon points="20,2 25,14 38,15 28,24 31,37 20,30 9,37 12,24 2,15 15,14"/>
+    </svg>
+    <svg class="animate-float-delay absolute top-44 right-[8%] w-11 h-11 text-pink-400/40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="4">
+      <polygon points="20,4 36,34 4,34" stroke-linejoin="round"/>
+    </svg>
+    <svg class="animate-float absolute bottom-32 left-[10%] w-9 h-9 text-teal-400/40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="4">
+      <rect x="6" y="6" width="28" height="28" rx="6" transform="rotate(15 20 20)"/>
+    </svg>
+    <svg class="animate-float-delay absolute bottom-24 right-[12%] w-10 h-10 text-indigo-400/40" viewBox="0 0 40 40" fill="currentColor">
+      <circle cx="20" cy="20" r="14"/>
+    </svg>
+  </div>
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white border-b-2 border-purple-400/40 shadow-lg shadow-indigo-600/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <!-- Brand Logo -->
+        <button onclick="navigateTo('home')" class="flex items-center gap-3 text-left group focus:outline-none">
+          <div class="w-10 h-10 md:w-11 md:h-11 rounded-2xl bg-gradient-to-br from-amber-300 via-orange-400 to-pink-500 flex items-center justify-center text-white shadow-md shadow-amber-500/30 group-hover:scale-105 group-hover:rotate-3 transition-transform">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+              <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" />
+              <line x1="12" y1="22" x2="12" y2="12" />
+              <polyline points="22 8.5 12 12 2 8.5" />
+            </svg>
+          </div>
+          <div>
+            <span class="font-display font-black text-lg md:text-xl tracking-tight text-white drop-shadow-xs block leading-none">
+              GEOMETRY <span class="text-amber-300">LEARNING</span>
+            </span>
+            <span class="text-[11px] md:text-xs font-bold text-blue-100">Matematika Seru • SMP Kelas 7</span>
+          </div>
+        </button>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-1.5 bg-white/15 backdrop-blur-md p-1.5 rounded-2xl border border-white/25">
+          <button data-nav="home" onclick="navigateTo('home')" class="nav-btn px-4 py-2 rounded-xl text-sm font-extrabold transition-all flex items-center gap-2">
+            <i data-lucide="home" class="w-4 h-4 text-amber-300 nav-icon"></i> Home
+          </button>
+          <button data-nav="materi" onclick="navigateTo('materi')" class="nav-btn px-4 py-2 rounded-xl text-sm font-extrabold transition-all flex items-center gap-2">
+            <i data-lucide="book-open" class="w-4 h-4 text-sky-300 nav-icon"></i> Materi Bangun Datar
+          </button>
+          <button data-nav="latihan" onclick="navigateTo('latihan')" class="nav-btn px-4 py-2 rounded-xl text-sm font-extrabold transition-all flex items-center gap-2">
+            <i data-lucide="pen-tool" class="w-4 h-4 text-emerald-300 nav-icon"></i> Latihan Soal
+          </button>
+          <button data-nav="kuis" onclick="navigateTo('kuis')" class="nav-btn px-4 py-2 rounded-xl text-sm font-extrabold transition-all flex items-center gap-2">
+            <i data-lucide="award" class="w-4 h-4 text-pink-300 nav-icon"></i> Kuis Interaktif
+          </button>
+          <button data-nav="progres" onclick="navigateTo('progres')" class="nav-btn px-4 py-2 rounded-xl text-sm font-extrabold transition-all flex items-center gap-2">
+            <i data-lucide="bar-chart-3" class="w-4 h-4 text-purple-200 nav-icon"></i> Progres Belajar
+          </button>
+        </nav>
+
+        <!-- Header Live Progress Pill + Mobile Menu Toggle -->
+        <div class="flex items-center gap-2.5">
+          <button onclick="navigateTo('progres')" title="Lihat Detail Progres Belajar" class="flex items-center gap-2 bg-white hover:bg-amber-50 border-2 border-amber-300 px-3 py-1.5 md:px-3.5 md:py-2 rounded-2xl transition-all shadow-sm">
+            <div class="w-7 h-7 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white shadow-xs">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+            </div>
+            <div class="text-left">
+              <div class="text-[10px] font-extrabold uppercase tracking-wider text-slate-500 leading-none">Progres</div>
+              <div id="header-progress-text" class="text-xs md:text-sm font-black text-indigo-700 leading-tight">0%</div>
+            </div>
+            <div class="hidden sm:block w-14 h-2.5 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+              <div id="header-progress-bar" class="h-full bg-gradient-to-r from-emerald-400 via-teal-500 to-blue-600 transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </button>
+
+          <!-- Mobile Hamburger Button -->
+          <button id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu Navigasi" class="lg:hidden p-2.5 rounded-xl bg-white/20 text-white hover:bg-white/30 border border-white/30">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-indigo-900/95 backdrop-blur-md border-t border-white/20 px-4 py-3 space-y-1.5 shadow-xl">
+      <button data-nav="home" onclick="navigateTo('home'); toggleMobileMenu(false)" class="nav-btn w-full text-left px-4 py-3 rounded-xl text-sm font-extrabold flex items-center gap-3">
+        <i data-lucide="home" class="w-4 h-4"></i> Home
+      </button>
+      <button data-nav="materi" onclick="navigateTo('materi'); toggleMobileMenu(false)" class="nav-btn w-full text-left px-4 py-3 rounded-xl text-sm font-extrabold flex items-center gap-3">
+        <i data-lucide="book-open" class="w-4 h-4"></i> Materi Bangun Datar (8 Bangun)
+      </button>
+      <button data-nav="latihan" onclick="navigateTo('latihan'); toggleMobileMenu(false)" class="nav-btn w-full text-left px-4 py-3 rounded-xl text-sm font-extrabold flex items-center gap-3">
+        <i data-lucide="pen-tool" class="w-4 h-4"></i> Latihan Soal (40 Soal)
+      </button>
+      <button data-nav="kuis" onclick="navigateTo('kuis'); toggleMobileMenu(false)" class="nav-btn w-full text-left px-4 py-3 rounded-xl text-sm font-extrabold flex items-center gap-3">
+        <i data-lucide="award" class="w-4 h-4"></i> Kuis Interaktif (10 Soal Acak)
+      </button>
+      <button data-nav="progres" onclick="navigateTo('progres'); toggleMobileMenu(false)" class="nav-btn w-full text-left px-4 py-3 rounded-xl text-sm font-extrabold flex items-center gap-3">
+        <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Progres Belajar
+      </button>
+    </div>
+  </header>
+
+  <!-- TOAST NOTIFICATION BANNER (Replaces alert) -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="relative z-10 flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
+
+    <!-- ==================== 1. HALAMAN UTAMA (HOME) ==================== -->
+    <section id="view-home" class="space-y-10 animate-pop">
+      <!-- Hero Card with Vibrant Multi-Stop Gradient -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-500 via-indigo-600 to-fuchsia-600 text-white p-6 sm:p-10 lg:p-12 shadow-xl shadow-indigo-600/20 border-2 border-white/30">
+        <!-- Colorful Decorative Blobs -->
+        <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-amber-300/30 blur-2xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-20 w-80 h-80 rounded-full bg-emerald-300/25 blur-2xl pointer-events-none"></div>
+
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <!-- Left Text Content -->
+          <div class="lg:col-span-7 space-y-5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-xs border border-white/35 text-xs sm:text-sm font-extrabold text-amber-200 shadow-xs">
+              <i data-lucide="graduation-cap" class="w-4 h-4 text-amber-300"></i>
+              <span>Media Pembelajaran Matematika Interaktif • SMP Kelas 7</span>
+            </div>
+
+            <h1 class="font-display font-black text-3xl sm:text-5xl lg:text-[54px] tracking-tight leading-tight drop-shadow-sm">
+              GEOMETRY <span class="text-amber-300">LEARNING</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl font-extrabold text-sky-100 leading-relaxed max-w-2xl">
+              “Belajar Bangun Datar Jadi Lebih Mudah dan Menyenangkan”
+            </p>
+
+            <p class="text-sm sm:text-base text-white/95 leading-relaxed max-w-xl">
+              Pahami konsep bangun datar bukan sekadar menghafal rumus! Eksplorasi sifat geometri penuh warna, saksikan <strong class="text-amber-200">animasi pembuktian rumus langkah demi langkah</strong>, dan uji pemahamanmu lewat latihan soal berpembahasan lengkap.
+            </p>
+
+            <div class="pt-2 flex flex-wrap items-center gap-3.5">
+              <button onclick="navigateTo('materi')" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-slate-900 font-black text-base shadow-lg shadow-orange-600/30 flex items-center gap-2.5 transition-all hover:scale-[1.03] active:scale-95">
+                <i data-lucide="play-circle" class="w-5 h-5 text-slate-900"></i>
+                Mulai Belajar
+              </button>
+              <button onclick="navigateTo('kuis')" class="px-5 py-3.5 rounded-2xl bg-white/20 hover:bg-white/30 backdrop-blur-xs border-2 border-white/40 text-white font-extrabold text-base flex items-center gap-2 transition-all hover:scale-[1.02]">
+                <i data-lucide="zap" class="w-5 h-5 text-amber-300"></i>
+                Coba Kuis Acak
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Interactive Floating Multi-Color Geometric Illustration Grid -->
+          <div class="lg:col-span-5">
+            <div class="bg-white/15 backdrop-blur-md border-2 border-white/30 rounded-3xl p-5 sm:p-6 shadow-inner">
+              <p class="text-xs font-extrabold uppercase tracking-wider text-amber-200 mb-3.5 text-center">
+                ✨ Klik Bangun Datar di Bawah untuk Langsung Belajar!
+              </p>
+              <div class="grid grid-cols-4 gap-3">
+                <!-- 1. Persegi (Sky Blue) -->
+                <button onclick="openShapeMateri('persegi')" class="animate-float group bg-gradient-to-b from-white to-sky-50 hover:from-sky-50 hover:to-sky-100 p-2.5 rounded-2xl flex flex-col items-center justify-center gap-1.5 shadow-md border-2 border-sky-200 transition-transform hover:scale-105" title="Belajar Persegi">
+                  <svg class="w-10 h-10" viewBox="0 0 60 60">
+                    <rect x="12" y="12" width="36" height="36" rx="5" fill="#7DD3FC" stroke="#0284C7" stroke-width="3.5"/>
+                  </svg>
+                  <span class="text-[10px] font-black text-sky-800">Persegi</span>
+                </button>
+
+                <!-- 2. Persegi Panjang (Purple Violet) -->
+                <button onclick="openShapeMateri('persegi_panjang')" class="animate-float-delay group bg-gradient-to-b from-white to-purple-50 hover:from-purple-50 hover:to-purple-100 p-2.5 rounded-2xl flex flex-col items-center justify-center gap-1.5 shadow-md border-2 border-purple-200 transition-transform hover:scale-105" title="Belajar Persegi Panjang">
+                  <svg class="w-10 h-10" viewBox="0 0 60 60">
+                    <rect x="6" y="16" width="48" height="28" rx="5" fill="#D8B4FE" stroke="#7E22CE" stroke-width="3.5"/>
+                  </svg>
+                  <span class="text-[10px] font-black text-purple-800 text-center leading-tight">P. Panjang</span>
+                </button>
+
+                <!-- 3. Segitiga (Coral / Orange) -->
+                <button onclick="openShapeMateri('segitiga')" class="animate-float group bg-gradient-to-b from-white to-orange-50 hover:from-orange-50 hover:to-orange-100 p-2.5 rounded-2xl flex flex-col items-center justify-center gap-1.5 shadow-md border-2 border-orange-200 transition-transform hover:scale-105" title="Belajar Segitiga">
+                  <svg class="w-10 h-10" viewBox="0 0 60 60">
+                    <polygon points="30,10 52,48 8,48" fill="#FDBA74" stroke="#EA580C" stroke-width="3.5" stroke-linejoin="round"/>
+                  </svg>
+                  <span class="text-[10px] font-black text-orange-800">Segitiga</span>
+                </button>
+
+                <!-- 4. Lingkaran (Cyan / Toska) -->
+                <button onclick="openShapeMateri('lingkaran')" class="animate-float-delay group bg-gradient-to-b from-white to-teal-50 hover:from-teal-50 hover:to-teal-100 p-2.5 rounded-2xl flex flex-col items-center justify-center gap-1.5 shadow-md border-2 border-teal-200 transition-transform hover:scale-105" title="Belajar Lingkaran">
+                  <svg class="w-10 h-10" viewBox="0 0 60 60">
+                    <circle cx="30" cy="30" r="20" fill="#5EEAD4" stroke="#0D9488" stroke-width="3.5"/>
+                    <line x1="30" y1="30" x2="50" y2="30" stroke="#0F766E" stroke-width="2.5" stroke-dasharray="3 2"/>
+                  </svg>
+                  <span class="text-[10px] font-black text-teal-800">Lingkaran</span>
+                </button>
+
+                <!-- 5. Jajar Genjang (Emerald Green) -->
+                <button onclick="openShapeMateri('jajar_genjang')" class="animate-float-delay group bg-gradient-to-b from-white to-emerald-50 hover:from-emerald-50 hover:to-emerald-100 p-2.5 rounded-2xl flex flex-col items-center justify-center gap-1.5 shadow-md border-2 border-emerald-200 transition-transform hover:scale-105" title="Belajar Jajar Genjang">
+                  <svg class="w-10 h-10" viewBox="0 0 60 60">
+                    <polygon points="16,15 52,15 44,45 8,45" fill="#6EE7B7" stroke="#059669" stroke-width="3.5" stroke-linejoin="round"/>
+                  </svg>
+                  <span class="text-[10px] font-black text-emerald-800 text-center leading-tight">J. Genjang</span>
+                </button>
+
+                <!-- 6. Trapesium (Amber / Sun Yellow) -->
+                <button onclick="openShapeMateri('trapesium')" class="animate-float group bg-gradient-to-b from-white to-amber-50 hover:from-amber-50 hover:to-amber-100 p-2.5 rounded-2xl flex flex-col items-center justify-center gap-1.5 shadow-md border-2 border-amber-200 transition-transform hover:scale-105" title="Belajar Trapesium">
+                  <svg class="w-10 h-10" viewBox="0 0 60 60">
+                    <polygon points="18,15 42,15 52,45 8,45" fill="#FDE047" stroke="#D97706" stroke-width="3.5" stroke-linejoin="round"/>
+                  </svg>
+                  <span class="text-[10px] font-black text-amber-800">Trapesium</span>
+                </button>
+
+                <!-- 7. Belah Ketupat (Pink Magenta) -->
+                <button onclick="openShapeMateri('belah_ketupat')" class="animate-float-delay group bg-gradient-to-b from-white to-pink-50 hover:from-pink-50 hover:to-pink-100 p-2.5 rounded-2xl flex flex-col items-center justify-center gap-1.5 shadow-md border-2 border-pink-200 transition-transform hover:scale-105" title="Belajar Belah Ketupat">
+                  <svg class="w-10 h-10" viewBox="0 0 60 60">
+                    <polygon points="30,8 50,30 30,52 10,30" fill="#F9A8D4" stroke="#DB2777" stroke-width="3.5" stroke-linejoin="round"/>
+                  </svg>
+                  <span class="text-[10px] font-black text-pink-800 text-center leading-tight">B. Ketupat</span>
+                </button>
+
+                <!-- 8. Layang-Layang (Indigo / Lavender) -->
+                <button onclick="openShapeMateri('layang_layang')" class="animate-float group bg-gradient-to-b from-white to-indigo-50 hover:from-indigo-50 hover:to-indigo-100 p-2.5 rounded-2xl flex flex-col items-center justify-center gap-1.5 shadow-md border-2 border-indigo-200 transition-transform hover:scale-105" title="Belajar Layang-Layang">
+                  <svg class="w-10 h-10" viewBox="0 0 60 60">
+                    <polygon points="30,7 48,24 30,53 12,24" fill="#A5B4FC" stroke="#4F46E5" stroke-width="3.5" stroke-linejoin="round"/>
+                  </svg>
+                  <span class="text-[10px] font-black text-indigo-800 text-center leading-tight">Layang²</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tujuan Pembelajaran Cards (Colorful Trio) -->
+      <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <span class="px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-extrabold uppercase tracking-wider">Kurikulum SMP Kelas 7</span>
+            <h2 class="font-display font-black text-2xl sm:text-3xl text-slate-800 mt-1.5">Tujuan Pembelajaran</h2>
+          </div>
+          <p class="text-sm font-medium text-slate-600">Dirancang agar siswa memahami konsep secara visual dan penuh warna</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="bg-gradient-to-br from-sky-50 via-white to-blue-100/70 rounded-3xl p-6 border-2 border-sky-200 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-600 text-white flex items-center justify-center mb-4 shadow-md shadow-sky-500/25">
+              <i data-lucide="shapes" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-display font-black text-lg text-sky-900 mb-2">1. Mengenal Sifat & Unsur</h3>
+            <p class="text-sm text-slate-700 leading-relaxed">
+              Siswa mampu mengidentifikasi pengertian, ciri-ciri sisi, sudut, simetri, serta diagonal pada 8 jenis bangun datar secara tepat.
+            </p>
+          </div>
+
+          <div class="bg-gradient-to-br from-purple-50 via-white to-pink-100/70 rounded-3xl p-6 border-2 border-purple-200 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 text-white flex items-center justify-center mb-4 shadow-md shadow-purple-500/25">
+              <i data-lucide="eye" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-display font-black text-lg text-purple-900 mb-2">2. Pembuktian Asal-Usul Rumus</h3>
+            <p class="text-sm text-slate-700 leading-relaxed">
+              Siswa tidak sekadar menghafal, melainkan memahami bagaimana rumus luas bangun datar ditemukan melalui simulasi visual bertahap.
+            </p>
+          </div>
+
+          <div class="bg-gradient-to-br from-amber-50 via-white to-emerald-100/70 rounded-3xl p-6 border-2 border-amber-200 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-emerald-500 text-white flex items-center justify-center mb-4 shadow-md shadow-emerald-500/25">
+              <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-display font-black text-lg text-emerald-900 mb-2">3. Pemecahan Masalah Nyata</h3>
+            <p class="text-sm text-slate-700 leading-relaxed">
+              Siswa terampil menyelesaikan 40 soal cerita kontekstual lengkap dengan langkah Diketahui, Ditanya, Rumus, hingga Hasil Akhir.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Access 8 Bangun Datar -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-xs font-extrabold uppercase tracking-wider">Eksplorasi Materi</span>
+            <h2 class="font-display font-black text-2xl sm:text-3xl text-slate-800 mt-1.5">Pilih Bangun Datar</h2>
+          </div>
+          <button onclick="navigateTo('materi')" class="px-4 py-2 rounded-xl bg-purple-100 hover:bg-purple-200 text-sm font-extrabold text-purple-700 flex items-center gap-1 transition-colors">
+            Lihat Semua <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div id="home-shapes-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Populated dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. MENU MATERI BANGUN DATAR ==================== -->
+    <section id="view-materi" class="hidden space-y-6 animate-pop">
+      <!-- Top Header & Shape Selector Bar -->
+      <div class="bg-white/90 backdrop-blur-md rounded-3xl p-5 sm:p-6 border-2 border-purple-200 shadow-sm space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div>
+            <span class="px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-extrabold uppercase tracking-wider">Modul Pembelajaran Interaktif</span>
+            <h2 class="font-display font-black text-2xl sm:text-3xl text-slate-800 mt-1">Materi Bangun Datar</h2>
+          </div>
+          <div class="flex items-center gap-2 text-xs sm:text-sm text-amber-900 bg-gradient-to-r from-amber-100 to-orange-100 px-4 py-2.5 rounded-2xl border border-amber-300 font-semibold">
+            <i data-lucide="lightbulb" class="w-4 h-4 text-amber-600 shrink-0"></i>
+            <span>Pelajari bagian <strong>E. Pembuktian Rumus</strong> untuk melihat animasi asal-usul rumus!</span>
+          </div>
+        </div>
+
+        <!-- 8 Shape Horizontal Selector Pills -->
+        <div id="materi-shape-tabs" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Active Shape Learning Content -->
+      <div id="materi-content-container" class="space-y-6">
+        <!-- Populated dynamically when a shape is selected -->
+      </div>
+    </section>
+
+    <!-- ==================== 3 & 4. MENU LATIHAN SOAL & PEMBAHASAN ==================== -->
+    <section id="view-latihan" class="hidden space-y-6 animate-pop">
+      <div class="bg-white/90 backdrop-blur-md rounded-3xl p-5 sm:p-6 border-2 border-sky-200 shadow-sm space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div>
+            <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-xs font-extrabold uppercase tracking-wider">40 Soal Kontekstual & Bertingkat</span>
+            <h2 class="font-display font-black text-2xl sm:text-3xl text-slate-800 mt-1">Latihan Soal Interaktif</h2>
+          </div>
+          <div id="latihan-summary-badge" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-extrabold text-xs sm:text-sm shadow-sm">
+            <i data-lucide="check-square" class="w-4 h-4"></i>
+            <span>Terjawab Benar: 0 / 40 Soal</span>
+          </div>
+        </div>
+
+        <!-- Filter Tabs for 8 Shapes -->
+        <div id="latihan-shape-tabs" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Instructions Banner -->
+      <div class="bg-gradient-to-r from-amber-50 via-purple-50 to-sky-50 border-2 border-amber-200 rounded-2xl p-4 flex items-start sm:items-center gap-3 text-xs sm:text-sm text-slate-800 shadow-xs">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center shrink-0 shadow-xs">
+          <i data-lucide="info" class="w-4 h-4"></i>
+        </div>
+        <p>
+          <strong>Cara Mengerjakan:</strong> Pilih atau ketik jawabanmu pada kolom yang tersedia, lalu klik <strong>"Periksa Jawaban"</strong>. Tombol <strong>"Lihat Pembahasan"</strong> akan otomatis terbuka setelah kamu mengirimkan jawaban!
+        </p>
+      </div>
+
+      <!-- Questions List for Selected Shape -->
+      <div id="latihan-questions-list" class="space-y-5">
+        <!-- Populated dynamically -->
+      </div>
+    </section>
+
+    <!-- ==================== 5. FITUR KUIS INTERAKTIF ==================== -->
+    <section id="view-kuis" class="hidden space-y-6 animate-pop">
+      <!-- Quiz Start Screen -->
+      <div id="quiz-start-screen" class="bg-gradient-to-br from-white via-purple-50/60 to-sky-50/70 rounded-3xl p-6 sm:p-10 border-2 border-purple-200 shadow-md text-center max-w-3xl mx-auto space-y-6">
+        <div class="w-20 h-20 rounded-3xl bg-gradient-to-br from-amber-400 via-pink-500 to-purple-600 text-white flex items-center justify-center mx-auto shadow-lg shadow-pink-500/25">
+          <i data-lucide="trophy" class="w-10 h-10"></i>
+        </div>
+        <div class="space-y-2">
+          <span class="px-3.5 py-1 rounded-full bg-gradient-to-r from-pink-100 to-purple-100 text-purple-700 text-xs font-extrabold uppercase tracking-wider border border-purple-200">Evaluasi Pemahaman</span>
+          <h2 class="font-display font-black text-2xl sm:text-4xl text-slate-800">Kuis Interaktif Bangun Datar</h2>
+          <p class="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">
+            Uji kemampuanmu dengan <strong>10 soal pilihan ganda acak</strong> dari seluruh materi bangun datar SMP Kelas 7.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-left max-w-xl mx-auto">
+          <div class="bg-sky-50 p-4 rounded-2xl border-2 border-sky-200">
+            <div class="text-sky-700 font-black text-lg">10 Soal</div>
+            <div class="text-xs text-slate-600 font-semibold">Diacak otomatis setiap sesi</div>
+          </div>
+          <div class="bg-amber-50 p-4 rounded-2xl border-2 border-amber-200">
+            <div class="text-amber-700 font-black text-lg">10 Menit</div>
+            <div class="text-xs text-slate-600 font-semibold">Batas waktu pengerjaan</div>
+          </div>
+          <div class="bg-emerald-50 p-4 rounded-2xl border-2 border-emerald-200">
+            <div class="text-emerald-700 font-black text-lg">Skor 0–100</div>
+            <div class="text-xs text-slate-600 font-semibold">Nilai & pembahasan langsung</div>
+          </div>
+        </div>
+
+        <button onclick="startQuiz()" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white font-black text-base sm:text-lg shadow-lg shadow-purple-600/25 transition-all hover:scale-[1.03] active:scale-95 inline-flex items-center gap-2.5">
+          <i data-lucide="play" class="w-5 h-5"></i> Mulai Kuis Sekarang
+        </button>
+      </div>
+
+      <!-- Quiz Active Screen -->
+      <div id="quiz-active-screen" class="hidden space-y-5 max-w-4xl mx-auto">
+        <!-- Timer & Progress Header -->
+        <div class="bg-white/95 rounded-3xl p-4 sm:p-5 border-2 border-purple-200 shadow-sm flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <span id="quiz-q-counter" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-extrabold text-sm">
+              Soal 1 / 10
+            </span>
+            <span id="quiz-q-topic" class="px-3 py-1.5 rounded-xl bg-pink-100 text-pink-700 font-extrabold text-xs border border-pink-200">
+              Topik: Persegi
+            </span>
+          </div>
+
+          <div class="flex items-center gap-2.5 bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-300 px-4 py-2 rounded-2xl">
+            <i data-lucide="clock" class="w-4 h-4 text-amber-700"></i>
+            <span class="text-xs font-extrabold text-amber-900">Sisa Waktu:</span>
+            <span id="quiz-timer" class="font-display font-black text-base text-orange-700 tabular-nums">10:00</span>
+          </div>
+        </div>
+
+        <!-- Question Navigation Pills (1 - 10) -->
+        <div id="quiz-nav-pills" class="flex flex-wrap gap-2 justify-center">
+          <!-- Populated dynamically -->
+        </div>
+
+        <!-- Current Question Card -->
+        <div id="quiz-question-card" class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-sky-200 shadow-sm space-y-6">
+          <!-- Populated dynamically -->
+        </div>
+
+        <!-- Quiz Controls -->
+        <div class="flex items-center justify-between gap-3">
+          <button id="quiz-prev-btn" onclick="prevQuizQuestion()" class="px-5 py-3 rounded-2xl bg-white border-2 border-slate-200 hover:bg-slate-50 text-slate-700 font-extrabold text-sm flex items-center gap-2 disabled:opacity-40">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> Sebelumnya
+          </button>
+
+          <button id="quiz-next-btn" onclick="nextQuizQuestion()" class="px-5 py-3 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-sm flex items-center gap-2 shadow-sm">
+            Selanjutnya <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+
+          <button id="quiz-submit-btn" onclick="finishQuiz(false)" class="hidden px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black text-sm shadow-md flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-4 h-4"></i> Selesai Kuis
+          </button>
+        </div>
+      </div>
+
+      <!-- Quiz Result Screen -->
+      <div id="quiz-result-screen" class="hidden space-y-6 max-w-4xl mx-auto">
+        <!-- Populated dynamically -->
+      </div>
+    </section>
+
+    <!-- ==================== 6. FITUR PROGRES BELAJAR ==================== -->
+    <section id="view-progres" class="hidden space-y-6 animate-pop">
+      <div class="bg-white/95 rounded-3xl p-6 sm:p-8 border-2 border-purple-200 shadow-sm space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+          <div>
+            <span class="px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-extrabold uppercase tracking-wider">Laporan Pencapaian Siswa</span>
+            <h2 class="font-display font-black text-2xl sm:text-3xl text-slate-800 mt-1">Dashboard Progres Belajar</h2>
+          </div>
+          <button onclick="openResetModal()" class="self-start sm:self-auto px-4 py-2.5 rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-600 border-2 border-rose-200 font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-colors">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Reset Progres
+          </button>
+        </div>
+
+        <!-- Overall Progress Bar -->
+        <div class="bg-gradient-to-r from-sky-100/80 via-purple-100/80 to-pink-100/80 rounded-3xl p-5 sm:p-6 border-2 border-purple-200 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-display font-black text-base sm:text-lg text-slate-800">Kemajuan Belajar Keseluruhan</span>
+            <span id="dash-overall-percent" class="font-display font-black text-2xl sm:text-3xl text-indigo-700">0%</span>
+          </div>
+          <div class="w-full h-4 bg-white rounded-full overflow-hidden p-0.5 border border-purple-200">
+            <div id="dash-overall-bar" class="h-full rounded-full bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500 transition-all duration-700" style="width: 0%"></div>
+          </div>
+          <p class="text-xs font-medium text-slate-600">
+            Dihitung dari 50% pemahaman materi (8 bangun datar) + 50% ketepatan latihan soal (40 soal).
+          </p>
+        </div>
+
+        <!-- 4 Colorful Metric Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-gradient-to-br from-sky-50 to-blue-100/80 rounded-2xl p-5 border-2 border-sky-200">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-extrabold text-sky-800 uppercase">Materi Dipelajari</span>
+              <i data-lucide="book-check" class="w-5 h-5 text-sky-600"></i>
+            </div>
+            <div id="dash-materi-count" class="font-display font-black text-2xl sm:text-3xl text-slate-800">0 / 8</div>
+            <div class="text-xs text-sky-700 font-bold mt-1">Bangun Datar</div>
+          </div>
+
+          <div class="bg-gradient-to-br from-purple-50 to-pink-100/80 rounded-2xl p-5 border-2 border-purple-200">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-extrabold text-purple-800 uppercase">Soal Dikerjakan</span>
+              <i data-lucide="edit-3" class="w-5 h-5 text-purple-600"></i>
+            </div>
+            <div id="dash-attempted-count" class="font-display font-black text-2xl sm:text-3xl text-slate-800">0 / 40</div>
+            <div class="text-xs text-purple-700 font-bold mt-1">Total Latihan</div>
+          </div>
+
+          <div class="bg-gradient-to-br from-emerald-50 to-teal-100/80 rounded-2xl p-5 border-2 border-emerald-200">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-extrabold text-emerald-800 uppercase">Jawaban Benar</span>
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600"></i>
+            </div>
+            <div id="dash-correct-count" class="font-display font-black text-2xl sm:text-3xl text-slate-800">0</div>
+            <div id="dash-latihan-score" class="text-xs text-emerald-700 font-bold mt-1">Nilai Latihan: 0</div>
+          </div>
+
+          <div class="bg-gradient-to-br from-amber-50 to-orange-100/80 rounded-2xl p-5 border-2 border-amber-200">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-extrabold text-amber-800 uppercase">Skor Kuis Terbaik</span>
+              <i data-lucide="award" class="w-5 h-5 text-amber-600"></i>
+            </div>
+            <div id="dash-best-quiz" class="font-display font-black text-2xl sm:text-3xl text-slate-800">-</div>
+            <div id="dash-quiz-attempts" class="text-xs text-amber-700 font-bold mt-1">Belum pernah kuis</div>
+          </div>
+        </div>
+
+        <!-- Detailed Per-Shape Progress Table/Grid -->
+        <div class="space-y-3">
+          <h3 class="font-display font-black text-xl text-slate-800">Rincian Status Per Bangun Datar</h3>
+          <div id="dash-shapes-breakdown" class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RESET CONFIRMATION MODAL (Custom UI, No confirm()) -->
+  <div id="reset-modal" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-5 shadow-2xl border-2 border-rose-200 animate-pop">
+      <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center">
+        <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+      </div>
+      <div class="space-y-1.5">
+        <h3 class="font-display font-extrabold text-xl text-slate-800">Reset Semua Progres Belajar?</h3>
+        <p class="text-sm text-slate-600">
+          Semua tanda materi selesai, jawaban latihan soal, dan riwayat skor kuis akan dihapus dan kembali ke 0%.
+        </p>
+      </div>
+      <div class="flex items-center justify-end gap-2.5 pt-2">
+        <button onclick="closeResetModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm">
+          Batal
+        </button>
+        <button onclick="confirmResetProgress()" class="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm">
+          Ya, Reset Sekarang
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="relative z-10 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 border-t-2 border-purple-200/70 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-600">
+      <div class="flex items-center gap-2 font-extrabold text-indigo-800">
+        <span class="w-3 h-3 rounded-full bg-gradient-to-r from-amber-400 to-pink-500"></span>
+        <span>GEOMETRY LEARNING – Belajar Bangun Datar</span>
+      </div>
+      <p class="text-center sm:text-right font-medium">
+        Media Pembelajaran Interaktif Matematika SMP Kelas 7 • Visualisasi Pembuktian Rumus & Latihan Terpadu
+      </p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT APPLICATION LOGIC & DATA -->
+  <script>
+    // =========================================================================
+    // 0. TEMA WARNA KHAS UNTUK MASING-MASING 8 BANGUN DATAR
+    // =========================================================================
+    const SHAPE_THEMES = {
+      persegi: {
+        name: 'Sky Blue',
+        cardBg: 'bg-gradient-to-br from-sky-50 via-white to-blue-100/70',
+        border: 'border-sky-300',
+        badgeBg: 'bg-sky-500 text-white',
+        softBadge: 'bg-sky-100 text-sky-800',
+        heroGrad: 'from-sky-500 via-blue-600 to-indigo-600',
+        tabActive: 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-md shadow-sky-500/25',
+        btnPrimary: 'bg-sky-600 hover:bg-sky-700 text-white',
+        btnSoft: 'bg-sky-100 hover:bg-sky-600 text-sky-800 hover:text-white',
+        barGrad: 'from-sky-400 to-blue-600'
+      },
+      persegi_panjang: {
+        name: 'Purple Violet',
+        cardBg: 'bg-gradient-to-br from-purple-50 via-white to-violet-100/70',
+        border: 'border-purple-300',
+        badgeBg: 'bg-purple-600 text-white',
+        softBadge: 'bg-purple-100 text-purple-800',
+        heroGrad: 'from-purple-600 via-violet-600 to-fuchsia-600',
+        tabActive: 'bg-gradient-to-r from-purple-600 to-violet-600 text-white shadow-md shadow-purple-500/25',
+        btnPrimary: 'bg-purple-600 hover:bg-purple-700 text-white',
+        btnSoft: 'bg-purple-100 hover:bg-purple-600 text-purple-800 hover:text-white',
+        barGrad: 'from-purple-500 to-fuchsia-600'
+      },
+      segitiga: {
+        name: 'Coral Orange',
+        cardBg: 'bg-gradient-to-br from-orange-50 via-white to-amber-100/70',
+        border: 'border-orange-300',
+        badgeBg: 'bg-orange-500 text-white',
+        softBadge: 'bg-orange-100 text-orange-800',
+        heroGrad: 'from-orange-500 via-amber-500 to-rose-500',
+        tabActive: 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md shadow-orange-500/25',
+        btnPrimary: 'bg-orange-500 hover:bg-orange-600 text-white',
+        btnSoft: 'bg-orange-100 hover:bg-orange-500 text-orange-800 hover:text-white',
+        barGrad: 'from-orange-400 to-rose-500'
+      },
+      lingkaran: {
+        name: 'Toska Cyan',
+        cardBg: 'bg-gradient-to-br from-teal-50 via-white to-cyan-100/70',
+        border: 'border-teal-300',
+        badgeBg: 'bg-teal-600 text-white',
+        softBadge: 'bg-teal-100 text-teal-800',
+        heroGrad: 'from-teal-500 via-cyan-600 to-blue-600',
+        tabActive: 'bg-gradient-to-r from-teal-500 to-cyan-600 text-white shadow-md shadow-teal-500/25',
+        btnPrimary: 'bg-teal-600 hover:bg-teal-700 text-white',
+        btnSoft: 'bg-teal-100 hover:bg-teal-600 text-teal-800 hover:text-white',
+        barGrad: 'from-teal-400 to-cyan-600'
+      },
+      jajar_genjang: {
+        name: 'Emerald Mint',
+        cardBg: 'bg-gradient-to-br from-emerald-50 via-white to-green-100/70',
+        border: 'border-emerald-300',
+        badgeBg: 'bg-emerald-600 text-white',
+        softBadge: 'bg-emerald-100 text-emerald-800',
+        heroGrad: 'from-emerald-500 via-green-600 to-teal-600',
+        tabActive: 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-md shadow-emerald-500/25',
+        btnPrimary: 'bg-emerald-600 hover:bg-emerald-700 text-white',
+        btnSoft: 'bg-emerald-100 hover:bg-emerald-600 text-emerald-800 hover:text-white',
+        barGrad: 'from-emerald-400 to-teal-600'
+      },
+      trapesium: {
+        name: 'Sun Amber',
+        cardBg: 'bg-gradient-to-br from-amber-50 via-white to-yellow-100/70',
+        border: 'border-amber-300',
+        badgeBg: 'bg-amber-500 text-white',
+        softBadge: 'bg-amber-100 text-amber-800',
+        heroGrad: 'from-amber-500 via-yellow-500 to-orange-500',
+        tabActive: 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-md shadow-amber-500/25',
+        btnPrimary: 'bg-amber-500 hover:bg-amber-600 text-white',
+        btnSoft: 'bg-amber-100 hover:bg-amber-500 text-amber-800 hover:text-white',
+        barGrad: 'from-amber-400 to-orange-500'
+      },
+      belah_ketupat: {
+        name: 'Pink Magenta',
+        cardBg: 'bg-gradient-to-br from-pink-50 via-white to-rose-100/70',
+        border: 'border-pink-300',
+        badgeBg: 'bg-pink-600 text-white',
+        softBadge: 'bg-pink-100 text-pink-800',
+        heroGrad: 'from-pink-500 via-rose-500 to-purple-600',
+        tabActive: 'bg-gradient-to-r from-pink-500 to-rose-600 text-white shadow-md shadow-pink-500/25',
+        btnPrimary: 'bg-pink-600 hover:bg-pink-700 text-white',
+        btnSoft: 'bg-pink-100 hover:bg-pink-600 text-pink-800 hover:text-white',
+        barGrad: 'from-pink-500 to-rose-600'
+      },
+      layang_layang: {
+        name: 'Indigo Lavender',
+        cardBg: 'bg-gradient-to-br from-indigo-50 via-white to-purple-100/70',
+        border: 'border-indigo-300',
+        badgeBg: 'bg-indigo-600 text-white',
+        softBadge: 'bg-indigo-100 text-indigo-800',
+        heroGrad: 'from-indigo-600 via-blue-600 to-purple-600',
+        tabActive: 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-500/25',
+        btnPrimary: 'bg-indigo-600 hover:bg-indigo-700 text-white',
+        btnSoft: 'bg-indigo-100 hover:bg-indigo-600 text-indigo-800 hover:text-white',
+        barGrad: 'from-indigo-500 to-purple-600'
+      }
+    };
+
+    // =========================================================================
+    // 1. DATA MATERI 8 BANGUN DATAR LENGKAP (Pengertian, Sifat, Gambar, Rumus, Pembuktian)
+    // =========================================================================
+    const SHAPES_DATA = [
+      {
+        id: 'persegi',
+        name: 'Persegi',
+        shortDesc: '4 sisi sama panjang & 4 sudut siku-siku (90°)',
+        accent: 'blue',
+        pengertian: 'Persegi adalah bangun datar segi empat yang memiliki empat buah sisi sama panjang dan empat buah sudut yang semuanya siku-siku (besarnya 90°). Dalam kehidupan sehari-hari, bentuk persegi sering kita temui pada ubin keramik lantai, papan catur, dan roti tawar.',
+        sifat: [
+          'Memiliki 4 sisi yang sama panjang (AB = BC = CD = DA = s).',
+          'Memiliki 4 sudut siku-siku yang masing-masing besarnya 90°.',
+          'Memiliki 2 diagonal yang sama panjang, saling berpotongan tegak lurus (90°), dan membagi dua sama panjang.',
+          'Memiliki 4 sumbu simetri lipat dan 4 simetri putar.',
+          'Sisi-sisi yang berhadapan sejajar.'
+        ],
+        rumus: {
+          luas: 'L = s × s = s²',
+          keliling: 'K = 4 × s',
+          keterangan: 'Keterangan: L = Luas, K = Keliling, s = panjang sisi persegi.'
+        },
+        diagramSVG: `
+          <svg viewBox="0 0 320 230" class="w-full max-w-sm mx-auto">
+            <defs>
+              <pattern id="grid-p" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#BAE6FD" stroke-width="1"/>
+              </pattern>
+            </defs>
+            <rect width="320" height="230" rx="16" fill="#F0F9FF"/>
+            <rect x="20" y="15" width="280" height="200" fill="url(#grid-p)"/>
+            <!-- Square -->
+            <rect x="95" y="45" width="130" height="130" fill="#7DD3FC" fill-opacity="0.65" stroke="#0284C7" stroke-width="4" rx="4"/>
+            <!-- Right angle symbols -->
+            <polyline points="95,60 110,60 110,45" fill="none" stroke="#F59E0B" stroke-width="2.5"/>
+            <polyline points="210,45 210,60 225,60" fill="none" stroke="#F59E0B" stroke-width="2.5"/>
+            <polyline points="95,160 110,160 110,175" fill="none" stroke="#F59E0B" stroke-width="2.5"/>
+            <polyline points="210,175 210,160 225,160" fill="none" stroke="#F59E0B" stroke-width="2.5"/>
+            <!-- Equal side tick marks -->
+            <line x1="160" y1="38" x2="160" y2="52" stroke="#EC4899" stroke-width="3"/>
+            <line x1="160" y1="168" x2="160" y2="182" stroke="#EC4899" stroke-width="3"/>
+            <line x1="88" y1="110" x2="102" y2="110" stroke="#EC4899" stroke-width="3"/>
+            <line x1="218" y1="110" x2="232" y2="110" stroke="#EC4899" stroke-width="3"/>
+            <!-- Vertices -->
+            <text x="78" y="42" font-size="13" font-weight="800" fill="#0F172A">D</text>
+            <text x="230" y="42" font-size="13" font-weight="800" fill="#0F172A">C</text>
+            <text x="78" y="185" font-size="13" font-weight="800" fill="#0F172A">A</text>
+            <text x="230" y="185" font-size="13" font-weight="800" fill="#0F172A">B</text>
+            <!-- Labels -->
+            <text x="155" y="198" font-size="14" font-weight="900" fill="#0369A1">sisi (s)</text>
+            <text x="238" y="114" font-size="14" font-weight="900" fill="#0369A1">sisi (s)</text>
+          </svg>
+        `,
+        proofSteps: [
+          {
+            title: 'Langkah 1: Siapkan Persegi Bersisi s = 4 Satuan',
+            desc: 'Misalkan kita memiliki sebuah persegi dengan panjang sisi s = 4 satuan. Kita ingin menghitung berapa banyak persegi satuan (1×1) yang dapat menutupi seluruh permukaannya.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#F0F9FF"/>
+                <rect x="100" y="30" width="140" height="140" fill="#E0F2FE" stroke="#0284C7" stroke-width="3.5"/>
+                <text x="152" y="192" font-size="14" font-weight="900" fill="#0284C7">s = 4 satuan</text>
+                <text x="250" y="105" font-size="14" font-weight="900" fill="#EA580C">s = 4 satuan</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Langkah 2: Isi Baris Pertama (4 Persegi Satuan)',
+            desc: 'Pada baris paling bawah, terdapat 4 persegi satuan berwarna cerah yang berjajar ke samping sesuai panjang sisi s = 4.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#F0F9FF"/>
+                <rect x="100" y="30" width="140" height="140" fill="#E0F2FE" stroke="#0284C7" stroke-width="3"/>
+                <g stroke="#0369A1" stroke-width="1.5">
+                  <rect x="100" y="135" width="35" height="35" fill="#FDE047"/>
+                  <rect x="135" y="135" width="35" height="35" fill="#FDBA74"/>
+                  <rect x="170" y="135" width="35" height="35" fill="#FDE047"/>
+                  <rect x="205" y="135" width="35" height="35" fill="#FDBA74"/>
+                </g>
+                <text x="113" y="157" font-size="12" font-weight="900" fill="#78350F">1</text>
+                <text x="148" y="157" font-size="12" font-weight="900" fill="#7C2D12">2</text>
+                <text x="183" y="157" font-size="12" font-weight="900" fill="#78350F">3</text>
+                <text x="218" y="157" font-size="12" font-weight="900" fill="#7C2D12">4</text>
+                <text x="120" y="195" font-size="13" font-weight="900" fill="#0369A1">Baris 1 = 4 persegi satuan</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Langkah 3: Susun ke Atas Sebanyak 4 Baris (Sesuai Sisi Tegak)',
+            desc: 'Karena tinggi sisi tegaknya juga s = 4 satuan, maka terbentuk 4 baris warna-warni yang masing-masing berisi 4 persegi satuan.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#F0F9FF"/>
+                <g stroke="#0F172A" stroke-width="1.5">
+                  <rect x="100" y="30" width="35" height="35" fill="#F9A8D4"/>
+                  <rect x="135" y="30" width="35" height="35" fill="#F9A8D4"/>
+                  <rect x="170" y="30" width="35" height="35" fill="#F9A8D4"/>
+                  <rect x="205" y="30" width="35" height="35" fill="#F9A8D4"/>
+                  <rect x="100" y="65" width="35" height="35" fill="#6EE7B7"/>
+                  <rect x="135" y="65" width="35" height="35" fill="#6EE7B7"/>
+                  <rect x="170" y="65" width="35" height="35" fill="#6EE7B7"/>
+                  <rect x="205" y="65" width="35" height="35" fill="#6EE7B7"/>
+                  <rect x="100" y="100" width="35" height="35" fill="#7DD3FC"/>
+                  <rect x="135" y="100" width="35" height="35" fill="#7DD3FC"/>
+                  <rect x="170" y="100" width="35" height="35" fill="#7DD3FC"/>
+                  <rect x="205" y="100" width="35" height="35" fill="#7DD3FC"/>
+                  <rect x="100" y="135" width="35" height="35" fill="#FDE047"/>
+                  <rect x="135" y="135" width="35" height="35" fill="#FDE047"/>
+                  <rect x="170" y="135" width="35" height="35" fill="#FDE047"/>
+                  <rect x="205" y="135" width="35" height="35" fill="#FDE047"/>
+                </g>
+                <text x="250" y="52" font-size="12" font-weight="800" fill="#DB2777">Baris 4 (4)</text>
+                <text x="250" y="87" font-size="12" font-weight="800" fill="#059669">Baris 3 (4)</text>
+                <text x="250" y="122" font-size="12" font-weight="800" fill="#0284C7">Baris 2 (4)</text>
+                <text x="250" y="157" font-size="12" font-weight="800" fill="#D97706">Baris 1 (4)</text>
+                <text x="95" y="196" font-size="13" font-weight="900" fill="#1E293B">Total = 4 + 4 + 4 + 4 = 4 × 4 = 16 satuan</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Kesimpulan Rumus Luas Persegi',
+            desc: 'Secara umum, untuk persegi dengan panjang sisi s, jumlah seluruh persegi satuannya adalah s baris dikali s kolom. Jadi terbukti: Luas Persegi = s × s = s².',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#E0F2FE"/>
+                <rect x="115" y="25" width="130" height="130" rx="10" fill="#38BDF8" fill-opacity="0.35" stroke="#0284C7" stroke-width="3.5"/>
+                <text x="172" y="175" font-size="14" font-weight="900" fill="#0284C7">s</text>
+                <text x="255" y="95" font-size="14" font-weight="900" fill="#EA580C">s</text>
+                <rect x="65" y="183" width="230" height="28" rx="10" fill="#0284C7"/>
+                <text x="180" y="202" text-anchor="middle" font-size="14" font-weight="900" fill="#FFFFFF">Terbukti: Luas = s × s = s²</text>
+              </svg>
+            `
+          }
+        ]
+      },
+      {
+        id: 'persegi_panjang',
+        name: 'Persegi Panjang',
+        shortDesc: '2 pasang sisi sejajar sama panjang & 4 sudut 90°',
+        accent: 'purple',
+        pengertian: 'Persegi panjang adalah bangun datar segi empat yang memiliki dua pasang sisi berhadapan yang sama panjang dan sejajar, serta keempat sudutnya siku-siku (90°). Contoh benda berbentuk persegi panjang adalah buku tulis, papan tulis, pintu, dan lapangan sepak bola.',
+        sifat: [
+          'Memiliki 2 pasang sisi berhadapan yang sama panjang dan sejajar (AB = DC = p dan AD = BC = l).',
+          'Memiliki 4 sudut siku-siku yang masing-masing besarnya 90°.',
+          'Memiliki 2 diagonal yang sama panjang dan saling berpotongan membagi dua sama panjang (tidak tegak lurus).',
+          'Memiliki 2 sumbu simetri lipat dan 2 simetri putar.'
+        ],
+        rumus: {
+          luas: 'L = p × l',
+          keliling: 'K = 2 × (p + l)',
+          keterangan: 'Keterangan: L = Luas, K = Keliling, p = panjang, l = lebar.'
+        },
+        diagramSVG: `
+          <svg viewBox="0 0 320 230" class="w-full max-w-sm mx-auto">
+            <rect width="320" height="230" rx="16" fill="#FAF5FF"/>
+            <rect x="55" y="55" width="210" height="115" fill="#D8B4FE" fill-opacity="0.7" stroke="#7E22CE" stroke-width="4" rx="4"/>
+            <!-- Right angles -->
+            <polyline points="55,70 70,70 70,55" fill="none" stroke="#F59E0B" stroke-width="2.5"/>
+            <polyline points="250,55 250,70 265,70" fill="none" stroke="#F59E0B" stroke-width="2.5"/>
+            <polyline points="55,155 70,155 70,170" fill="none" stroke="#F59E0B" stroke-width="2.5"/>
+            <polyline points="250,170 250,155 265,155" fill="none" stroke="#F59E0B" stroke-width="2.5"/>
+            <!-- Ticks -->
+            <line x1="160" y1="48" x2="160" y2="62" stroke="#0284C7" stroke-width="3"/>
+            <line x1="160" y1="163" x2="160" y2="177" stroke="#0284C7" stroke-width="3"/>
+            <line x1="48" y1="109" x2="62" y2="109" stroke="#EC4899" stroke-width="3"/>
+            <line x1="48" y1="115" x2="62" y2="115" stroke="#EC4899" stroke-width="3"/>
+            <line x1="258" y1="109" x2="272" y2="109" stroke="#EC4899" stroke-width="3"/>
+            <line x1="258" y1="115" x2="272" y2="115" stroke="#EC4899" stroke-width="3"/>
+            <!-- Labels -->
+            <text x="132" y="195" font-size="14" font-weight="900" fill="#7E22CE">panjang (p)</text>
+            <text x="275" y="117" font-size="14" font-weight="900" fill="#DB2777">lebar (l)</text>
+          </svg>
+        `,
+        proofSteps: [
+          {
+            title: 'Langkah 1: Siapkan Persegi Panjang (p = 5, l = 3)',
+            desc: 'Misalkan terdapat persegi panjang dengan panjang p = 5 satuan dan lebar l = 3 satuan.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#FAF5FF"/>
+                <rect x="65" y="45" width="200" height="120" fill="#F3E8FF" stroke="#7E22CE" stroke-width="3.5"/>
+                <text x="130" y="186" font-size="14" font-weight="900" fill="#7E22CE">p = 5 kolom</text>
+                <text x="275" y="110" font-size="14" font-weight="900" fill="#DB2777">l = 3 baris</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Langkah 2: Isi Baris Pertama Sebanyak p = 5 Persegi Satuan',
+            desc: 'Susun persegi satuan pada baris pertama dari kiri ke kanan. Terlihat ada 5 persegi satuan berwarna kuning cerah sesuai nilai panjang (p).',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#FAF5FF"/>
+                <rect x="65" y="45" width="200" height="120" fill="#F3E8FF" stroke="#7E22CE" stroke-width="3"/>
+                <g fill="#FDE047" stroke="#B45309" stroke-width="1.5">
+                  <rect x="65" y="125" width="40" height="40"/>
+                  <rect x="105" y="125" width="40" height="40"/>
+                  <rect x="145" y="125" width="40" height="40"/>
+                  <rect x="185" y="125" width="40" height="40"/>
+                  <rect x="225" y="125" width="40" height="40"/>
+                </g>
+                <text x="81" y="150" font-size="13" font-weight="900" fill="#78350F">1</text>
+                <text x="121" y="150" font-size="13" font-weight="900" fill="#78350F">2</text>
+                <text x="161" y="150" font-size="13" font-weight="900" fill="#78350F">3</text>
+                <text x="201" y="150" font-size="13" font-weight="900" fill="#78350F">4</text>
+                <text x="241" y="150" font-size="13" font-weight="900" fill="#78350F">5</text>
+                <text x="105" y="192" font-size="13" font-weight="900" fill="#7E22CE">1 baris = 5 persegi satuan</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Langkah 3: Lengkapi Hingga l = 3 Baris ke Atas',
+            desc: 'Tumpuk ke atas sebanyak 3 baris warna-warni (sesuai lebar l = 3). Total seluruh persegi satuan adalah 5 + 5 + 5 = 3 × 5 = 15 satuan.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#FAF5FF"/>
+                <g stroke="#1E293B" stroke-width="1.5">
+                  <rect x="65" y="45" width="40" height="40" fill="#6EE7B7"/>
+                  <rect x="105" y="45" width="40" height="40" fill="#6EE7B7"/>
+                  <rect x="145" y="45" width="40" height="40" fill="#6EE7B7"/>
+                  <rect x="185" y="45" width="40" height="40" fill="#6EE7B7"/>
+                  <rect x="225" y="45" width="40" height="40" fill="#6EE7B7"/>
+                  <rect x="65" y="85" width="40" height="40" fill="#F9A8D4"/>
+                  <rect x="105" y="85" width="40" height="40" fill="#F9A8D4"/>
+                  <rect x="145" y="85" width="40" height="40" fill="#F9A8D4"/>
+                  <rect x="185" y="85" width="40" height="40" fill="#F9A8D4"/>
+                  <rect x="225" y="85" width="40" height="40" fill="#F9A8D4"/>
+                  <rect x="65" y="125" width="40" height="40" fill="#FDE047"/>
+                  <rect x="105" y="125" width="40" height="40" fill="#FDE047"/>
+                  <rect x="145" y="125" width="40" height="40" fill="#FDE047"/>
+                  <rect x="185" y="125" width="40" height="40" fill="#FDE047"/>
+                  <rect x="225" y="125" width="40" height="40" fill="#FDE047"/>
+                </g>
+                <text x="275" y="70" font-size="12" font-weight="800" fill="#059669">Baris 3</text>
+                <text x="275" y="110" font-size="12" font-weight="800" fill="#DB2777">Baris 2</text>
+                <text x="275" y="150" font-size="12" font-weight="800" fill="#D97706">Baris 1</text>
+                <text x="180" y="195" text-anchor="middle" font-size="13" font-weight="900" fill="#1E293B">Total = 5 kolom × 3 baris = 15 satuan</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Kesimpulan Rumus Luas Persegi Panjang',
+            desc: 'Banyak persegi satuan yang menutupi persegi panjang selalu sama dengan hasil kali panjang (p) dan lebar (l). Terbukti: Luas = p × l.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#F3E8FF"/>
+                <rect x="75" y="35" width="210" height="110" rx="10" fill="#A855F7" fill-opacity="0.28" stroke="#7E22CE" stroke-width="3.5"/>
+                <text x="180" y="165" text-anchor="middle" font-size="14" font-weight="900" fill="#7E22CE">panjang (p)</text>
+                <text x="295" y="95" font-size="14" font-weight="900" fill="#DB2777">lebar (l)</text>
+                <rect x="75" y="180" width="210" height="28" rx="10" fill="#7E22CE"/>
+                <text x="180" y="199" text-anchor="middle" font-size="14" font-weight="900" fill="#FFFFFF">Terbukti: Luas = p × l</text>
+              </svg>
+            `
+          }
+        ]
+      },
+      {
+        id: 'segitiga',
+        name: 'Segitiga',
+        shortDesc: '3 sisi & 3 sudut dengan jumlah sudut dalam 180°',
+        accent: 'orange',
+        pengertian: 'Segitiga adalah bangun datar yang dibatasi oleh tiga buah sisi dan memiliki tiga buah titik sudut. Jumlah besar ketiga sudut dalam segitiga selalu 180°. Contoh benda berbentuk segitiga adalah rambu lalu lintas peringatan, potongan pizza, dan penggaris segitiga.',
+        sifat: [
+          'Memiliki 3 sisi dan 3 titik sudut.',
+          'Jumlah besar ketiga sudut dalamnya selalu 180°.',
+          'Berdasarkan panjang sisinya dibagi menjadi: segitiga sama sisi, segitiga sama kaki, dan segitiga sembarang.',
+          'Berdasarkan besar sudutnya dibagi menjadi: segitiga lancip, segitiga siku-siku, dan segitiga tumpul.',
+          'Garis tinggi segitiga selalu tegak lurus (90°) terhadap sisi alasnya.'
+        ],
+        rumus: {
+          luas: 'L = ½ × a × t',
+          keliling: 'K = sisi 1 + sisi 2 + sisi 3',
+          keterangan: 'Keterangan: L = Luas, K = Keliling, a = panjang alas, t = tinggi segitiga (tegak lurus alas).'
+        },
+        diagramSVG: `
+          <svg viewBox="0 0 320 230" class="w-full max-w-sm mx-auto">
+            <rect width="320" height="230" rx="16" fill="#FFF7ED"/>
+            <!-- Triangle -->
+            <polygon points="160,38 65,175 255,175" fill="#FDBA74" fill-opacity="0.75" stroke="#EA580C" stroke-width="4" stroke-linejoin="round"/>
+            <!-- Height dashed line in bright rose/red -->
+            <line x1="160" y1="38" x2="160" y2="175" stroke="#E11D48" stroke-width="3" stroke-dasharray="5 4"/>
+            <!-- Right angle at base -->
+            <polyline points="160,160 175,160 175,175" fill="none" stroke="#E11D48" stroke-width="2.5"/>
+            <!-- Base highlight -->
+            <line x1="65" y1="175" x2="255" y2="175" stroke="#0284C7" stroke-width="4.5"/>
+            <!-- Labels -->
+            <text x="167" y="115" font-size="14" font-weight="900" fill="#E11D48">tinggi (t)</text>
+            <text x="135" y="198" font-size="14" font-weight="900" fill="#0284C7">alas (a)</text>
+            <text x="86" y="100" font-size="12" font-weight="800" fill="#9A3412">sisi miring</text>
+          </svg>
+        `,
+        proofSteps: [
+          {
+            title: 'Langkah 1: Siapkan Sebuah Segitiga (Alas a, Tinggi t)',
+            desc: 'Perhatikan sebuah segitiga berwarna biru langit dengan alas biru (a) dan garis tinggi merah (t).',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#FFF7ED"/>
+                <polygon points="80,170 240,170 130,50" fill="#38BDF8" fill-opacity="0.7" stroke="#0284C7" stroke-width="3.5" stroke-linejoin="round"/>
+                <line x1="130" y1="50" x2="130" y2="170" stroke="#E11D48" stroke-width="2.5" stroke-dasharray="4 3"/>
+                <text x="136" y="120" font-size="13" font-weight="900" fill="#E11D48">t</text>
+                <text x="155" y="190" font-size="14" font-weight="900" fill="#0284C7">alas (a)</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Langkah 2: Gandakan Segitiga (Buat Segitiga Kedua yang Kongruen)',
+            desc: 'Kita buat satu lagi segitiga berwarna kuning/oranye cerah yang ukuran dan bentuknya persis sama (kongruen) dengan segitiga biru.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#FFF7ED"/>
+                <polygon points="50,170 210,170 100,50" fill="#38BDF8" fill-opacity="0.75" stroke="#0284C7" stroke-width="3" stroke-linejoin="round"/>
+                <polygon points="160,170 320,170 210,50" fill="#FACC15" fill-opacity="0.85" stroke="#EA580C" stroke-width="3" stroke-linejoin="round"/>
+                <text x="120" y="192" font-size="12" font-weight="900" fill="#0284C7">Segitiga 1 (Biru)</text>
+                <text x="225" y="192" font-size="12" font-weight="900" fill="#EA580C">Segitiga 2 (Kuning)</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Langkah 3: Putar Segitiga Kuning 180° dan Gabungkan',
+            desc: 'Putar segitiga kuning sebesar 180° dan tempelkan sisi miringnya pada segitiga biru. Keduanya bergabung membentuk Jajar Genjang dengan alas a dan tinggi t!',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#FFF7ED"/>
+                <polygon points="75,170 235,170 125,50" fill="#38BDF8" fill-opacity="0.75" stroke="#0284C7" stroke-width="3" stroke-linejoin="round"/>
+                <polygon points="285,50 125,50 235,170" fill="#FACC15" fill-opacity="0.85" stroke="#EA580C" stroke-width="3" stroke-linejoin="round"/>
+                <line x1="125" y1="50" x2="125" y2="170" stroke="#E11D48" stroke-width="2.5" stroke-dasharray="4 3"/>
+                <text x="131" y="125" font-size="13" font-weight="900" fill="#E11D48">t</text>
+                <text x="150" y="192" font-size="14" font-weight="900" fill="#0284C7">alas (a)</text>
+                <text x="180" y="32" text-anchor="middle" font-size="12" font-weight="900" fill="#EA580C">2 Segitiga = 1 Jajar Genjang (Luas = a × t)</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Kesimpulan Rumus Luas Segitiga',
+            desc: 'Karena 2 buah segitiga kongruen membentuk jajar genjang/persegi panjang dengan luas a × t, maka luas 1 segitiga adalah setengahnya: Luas = ½ × a × t.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#FFEDD5"/>
+                <polygon points="85,155 245,155 135,40" fill="#FB923C" fill-opacity="0.35" stroke="#EA580C" stroke-width="3.5"/>
+                <polygon points="295,40 135,40 245,155" fill="none" stroke="#94A3B8" stroke-width="2" stroke-dasharray="5 4"/>
+                <rect x="65" y="175" width="230" height="30" rx="10" fill="#EA580C"/>
+                <text x="180" y="195" text-anchor="middle" font-size="14" font-weight="900" fill="#FFFFFF">Terbukti: Luas = ½ × a × t</text>
+              </svg>
+            `
+          }
+        ]
+      },
+      {
+        id: 'lingkaran',
+        name: 'Lingkaran',
+        shortDesc: 'Kurva tertutup berjarak sama dari titik pusat',
+        accent: 'teal',
+        pengertian: 'Lingkaran adalah kumpulan semua titik pada bidang datar yang berjarak sama terhadap suatu titik tertentu yang disebut titik pusat. Jarak dari titik pusat ke tepi lingkaran disebut jari-jari (r), sedangkan garis lurus yang melalui titik pusat dari tepi ke tepi disebut diameter (d = 2r).',
+        sifat: [
+          'Memiliki 1 titik pusat di tengah lingkaran.',
+          'Memiliki jari-jari (r) yang panjangnya selalu sama ke segala arah.',
+          'Panjang diameter (d) sama dengan dua kali panjang jari-jari (d = 2 × r).',
+          'Memiliki simetri lipat dan simetri putar yang jumlahnya tak terhingga.',
+          'Nilai perbandingan keliling terhadap diameter selalu tetap, yaitu π (pi) ≈ 22/7 atau 3,14.'
+        ],
+        rumus: {
+          luas: 'L = π × r²',
+          keliling: 'K = 2 × π × r  atau  K = π × d',
+          keterangan: 'Keterangan: r = jari-jari, d = diameter (2r), π ≈ 22/7 (untuk kelipatan 7) atau 3,14.'
+        },
+        diagramSVG: `
+          <svg viewBox="0 0 320 230" class="w-full max-w-sm mx-auto">
+            <rect width="320" height="230" rx="16" fill="#F0FDFA"/>
+            <!-- Circle -->
+            <circle cx="160" cy="115" r="76" fill="#5EEAD4" fill-opacity="0.55" stroke="#0D9488" stroke-width="4"/>
+            <!-- Diameter -->
+            <line x1="84" y1="115" x2="236" y2="115" stroke="#0284C7" stroke-width="3" stroke-dasharray="5 3"/>
+            <!-- Radius -->
+            <line x1="160" y1="115" x2="214" y2="61" stroke="#E11D48" stroke-width="3.5"/>
+            <!-- Center dot -->
+            <circle cx="160" cy="115" r="5" fill="#0F172A"/>
+            <text x="148" y="135" font-size="13" font-weight="900" fill="#0F172A">O</text>
+            <!-- Labels -->
+            <text x="192" y="82" font-size="13" font-weight="900" fill="#E11D48">r (jari-jari)</text>
+            <text x="115" y="108" font-size="13" font-weight="900" fill="#0284C7">diameter (d)</text>
+          </svg>
+        `,
+        proofSteps: [
+          {
+            title: 'Langkah 1: Bagi Lingkaran Menjadi 8 Juring Sama Besar',
+            desc: 'Sebuah lingkaran berjari-jari r dan keliling K = 2πr dipotong menjadi 8 juring (potongan seperti kue pizza) dengan warna biru cerah dan pink/ungu berselang-seling.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#F0FDFA"/>
+                <g transform="translate(180,105)">
+                  <path d="M0,0 L70,0 A70,70 0 0,1 49.5,49.5 Z" fill="#38BDF8" stroke="#0F172A" stroke-width="1.5"/>
+                  <path d="M0,0 L49.5,49.5 A70,70 0 0,1 0,70 Z" fill="#F472B6" stroke="#0F172A" stroke-width="1.5"/>
+                  <path d="M0,0 L0,70 A70,70 0 0,1 -49.5,49.5 Z" fill="#38BDF8" stroke="#0F172A" stroke-width="1.5"/>
+                  <path d="M0,0 L-49.5,49.5 A70,70 0 0,1 -70,0 Z" fill="#F472B6" stroke="#0F172A" stroke-width="1.5"/>
+                  <path d="M0,0 L-70,0 A70,70 0 0,1 -49.5,-49.5 Z" fill="#38BDF8" stroke="#0F172A" stroke-width="1.5"/>
+                  <path d="M0,0 L-49.5,-49.5 A70,70 0 0,1 0,-70 Z" fill="#F472B6" stroke="#0F172A" stroke-width="1.5"/>
+                  <path d="M0,0 L0,-70 A70,70 0 0,1 49.5,-49.5 Z" fill="#38BDF8" stroke="#0F172A" stroke-width="1.5"/>
+                  <path d="M0,0 L49.5,-49.5 A70,70 0 0,1 70,0 Z" fill="#F472B6" stroke="#0F172A" stroke-width="1.5"/>
+                </g>
+                <text x="180" y="200" text-anchor="middle" font-size="13" font-weight="900" fill="#0F766E">4 Juring Biru + 4 Juring Pink (Jari-jari = r)</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Langkah 2: Susun Juring Secara Zig-Zag Saling Mengunci',
+            desc: 'Juring biru diletakkan menghadap ke atas, dan juring pink diselipkan menghadap ke bawah. Susunan ini menyerupai bangun Persegi Panjang!',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#F0FDFA"/>
+                <!-- 4 Blue sectors pointing up -->
+                <g fill="#38BDF8" stroke="#0369A1" stroke-width="1.5">
+                  <path d="M75,65 L52,145 Q75,155 98,145 Z"/>
+                  <path d="M121,65 L98,145 Q121,155 144,145 Z"/>
+                  <path d="M167,65 L144,145 Q167,155 190,145 Z"/>
+                  <path d="M213,65 L190,145 Q213,155 236,145 Z"/>
+                </g>
+                <!-- 4 Pink sectors pointing down -->
+                <g fill="#F472B6" stroke="#BE185D" stroke-width="1.5">
+                  <path d="M98,145 L75,65 Q98,55 121,65 Z"/>
+                  <path d="M144,145 L121,65 Q144,55 167,65 Z"/>
+                  <path d="M190,145 L167,65 Q190,55 213,65 Z"/>
+                  <path d="M236,145 L213,65 Q236,55 259,65 Z"/>
+                </g>
+                <text x="272" y="110" font-size="13" font-weight="900" fill="#0284C7">lebar = r</text>
+                <text x="155" y="176" text-anchor="middle" font-size="13" font-weight="900" fill="#BE185D">panjang = ½ Keliling = π × r</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Langkah 3: Semakin Banyak Juring, Semakin Lurus Sisinya',
+            desc: 'Jika juring dipotong sangat kecil, lengkungan atas dan bawah menjadi garis lurus membentuk persegi panjang sempurna dengan panjang = ½ × 2πr = πr dan lebar = r.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#CCFBF1"/>
+                <rect x="65" y="55" width="210" height="85" rx="8" fill="url(#lingGrad)" stroke="#0D9488" stroke-width="3.5"/>
+                <defs>
+                  <linearGradient id="lingGrad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#7DD3FC"/>
+                    <stop offset="100%" stop-color="#F9A8D4"/>
+                  </linearGradient>
+                </defs>
+                <text x="170" y="45" text-anchor="middle" font-size="13" font-weight="900" fill="#BE185D">panjang (p) = ½ × Keliling = π × r</text>
+                <text x="285" y="102" font-size="13" font-weight="900" fill="#0284C7">lebar (l) = r</text>
+                <rect x="65" y="168" width="230" height="30" rx="10" fill="#0D9488"/>
+                <text x="180" y="188" text-anchor="middle" font-size="13" font-weight="900" fill="#FFFFFF">Luas = p × l = (π × r) × r = π × r²</text>
+              </svg>
+            `
+          }
+        ]
+      },
+      {
+        id: 'jajar_genjang',
+        name: 'Jajar Genjang',
+        shortDesc: '2 pasang sisi sejajar & sama panjang, sudut berhadapan sama',
+        accent: 'emerald',
+        pengertian: 'Jajar genjang adalah bangun datar segi empat yang dibentuk dari sebuah segitiga dan bayangannya yang diputar setengah putaran (180°), sehingga memiliki dua pasang sisi yang sejajar dan sama panjang.',
+        sifat: [
+          'Memiliki 2 pasang sisi yang berhadapan sama panjang dan sejajar.',
+          'Sudut-sudut yang berhadapan sama besar.',
+          'Jumlah dua sudut yang berdekatan selalu 180°.',
+          'Memiliki 2 diagonal yang saling membagi dua sama panjang.',
+          'Tidak memiliki sumbu simetri lipat, tetapi memiliki 2 simetri putar.'
+        ],
+        rumus: {
+          luas: 'L = a × t',
+          keliling: 'K = 2 × (a + b)',
+          keterangan: 'Keterangan: a = panjang alas, b = sisi miring, t = tinggi (tegak lurus alas).'
+        },
+        diagramSVG: `
+          <svg viewBox="0 0 320 230" class="w-full max-w-sm mx-auto">
+            <rect width="320" height="230" rx="16" fill="#ECFDF5"/>
+            <polygon points="95,55 265,55 225,175 55,175" fill="#6EE7B7" fill-opacity="0.7" stroke="#059669" stroke-width="4" stroke-linejoin="round"/>
+            <!-- Height line -->
+            <line x1="95" y1="55" x2="95" y2="175" stroke="#E11D48" stroke-width="3" stroke-dasharray="5 4"/>
+            <polyline points="95,160 110,160 110,175" fill="none" stroke="#E11D48" stroke-width="2.5"/>
+            <!-- Base highlight -->
+            <line x1="55" y1="175" x2="225" y2="175" stroke="#0284C7" stroke-width="4.5"/>
+            <!-- Labels -->
+            <text x="102" y="120" font-size="13" font-weight="900" fill="#E11D48">tinggi (t)</text>
+            <text x="135" y="198" font-size="14" font-weight="900" fill="#0284C7">alas (a)</text>
+            <text x="252" y="120" font-size="13" font-weight="900" fill="#047857">sisi miring (b)</text>
+          </svg>
+        `,
+        proofSteps: [
+          {
+            title: 'Langkah 1: Siapkan Jajar Genjang dengan Alas a dan Tinggi t',
+            desc: 'Tarik garis tinggi merah (t) dari sudut kiri atas tegak lurus ke alas biru. Terbentuk sebuah potongan segitiga berwarna oranye/kuning cerah di bagian kiri.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#ECFDF5"/>
+                <polygon points="105,50 265,50 225,165 65,165" fill="#34D399" fill-opacity="0.75" stroke="#059669" stroke-width="3"/>
+                <polygon points="105,50 105,165 65,165" fill="#FACC15" stroke="#EA580C" stroke-width="2.5" stroke-dasharray="4 3"/>
+                <text x="112" y="115" font-size="13" font-weight="900" fill="#E11D48">t</text>
+                <text x="145" y="188" font-size="14" font-weight="900" fill="#0284C7">alas (a)</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Langkah 2: Potong Segitiga Kuning Kiri & Geser ke Kanan',
+            desc: 'Potong segitiga kuning di sisi kiri sepanjang garis tinggi t, lalu geser lurus ke sisi kanan jajar genjang.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#ECFDF5"/>
+                <!-- Main trapezoid body -->
+                <polygon points="105,50 265,50 225,165 105,165" fill="#34D399" fill-opacity="0.75" stroke="#059669" stroke-width="3"/>
+                <!-- Moving triangle shifted right -->
+                <polygon points="265,50 265,165 225,165" fill="#FACC15" stroke="#EA580C" stroke-width="3"/>
+                <path d="M 85 110 Q 175 20 250 95" fill="none" stroke="#EA580C" stroke-width="2.5" stroke-dasharray="4 3"/>
+                <text x="180" y="192" text-anchor="middle" font-size="13" font-weight="900" fill="#EA580C">Potongan segitiga kuning dipindah mengisi sisi kanan!</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Langkah 3: Terbentuk Persegi Panjang Utuh!',
+            desc: 'Setelah digabungkan, jajar genjang berubah menjadi Persegi Panjang dengan panjang = a dan lebar = t. Karena luasnya tidak berubah, terbukti: Luas Jajar Genjang = a × t.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#D1FAE5"/>
+                <rect x="95" y="40" width="170" height="115" rx="8" fill="#10B981" fill-opacity="0.28" stroke="#059669" stroke-width="3.5"/>
+                <text x="180" y="172" text-anchor="middle" font-size="14" font-weight="900" fill="#0284C7">panjang = alas (a)</text>
+                <text x="275" y="102" font-size="14" font-weight="900" fill="#E11D48">lebar = t</text>
+                <rect x="75" y="182" width="210" height="28" rx="10" fill="#059669"/>
+                <text x="180" y="201" text-anchor="middle" font-size="14" font-weight="900" fill="#FFFFFF">Terbukti: Luas = a × t</text>
+              </svg>
+            `
+          }
+        ]
+      },
+      {
+        id: 'trapesium',
+        name: 'Trapesium',
+        shortDesc: 'Segi empat dengan tepat sepasang sisi sejajar',
+        accent: 'amber',
+        pengertian: 'Trapesium adalah bangun datar segi empat yang memiliki tepat sepasang sisi berhadapan yang sejajar (sisi atas a dan sisi bawah b), tetapi tidak sama panjang. Contoh benda berbentuk trapesium adalah atap rumah, perahu kertas, dan tas tangan.',
+        sifat: [
+          'Memiliki tepat sepasang sisi yang sejajar (sisi sejajar a dan b).',
+          'Jumlah dua sudut yang berdekatan di antara dua sisi sejajar adalah 180°.',
+          'Terdiri dari 3 jenis: trapesium sama kaki, trapesium siku-siku, dan trapesium sembarang.',
+          'Pada trapesium sama kaki, diagonalnya sama panjang dan memiliki 1 sumbu simetri.'
+        ],
+        rumus: {
+          luas: 'L = ½ × (a + b) × t',
+          keliling: 'K = jumlah seluruh panjang sisinya',
+          keterangan: 'Keterangan: a = sisi sejajar atas, b = sisi sejajar bawah, t = tinggi trapesium.'
+        },
+        diagramSVG: `
+          <svg viewBox="0 0 320 230" class="w-full max-w-sm mx-auto">
+            <rect width="320" height="230" rx="16" fill="#FFFBEB"/>
+            <polygon points="105,55 215,55 265,175 55,175" fill="#FDE047" fill-opacity="0.7" stroke="#D97706" stroke-width="4" stroke-linejoin="round"/>
+            <!-- Height -->
+            <line x1="105" y1="55" x2="105" y2="175" stroke="#E11D48" stroke-width="3" stroke-dasharray="5 4"/>
+            <polyline points="105,160 120,160 120,175" fill="none" stroke="#E11D48" stroke-width="2.5"/>
+            <!-- Labels -->
+            <text x="135" y="45" font-size="13" font-weight="900" fill="#B45309">sisi atas (a)</text>
+            <text x="125" y="198" font-size="13" font-weight="900" fill="#0284C7">sisi bawah (b)</text>
+            <text x="112" y="122" font-size="13" font-weight="900" fill="#E11D48">tinggi (t)</text>
+          </svg>
+        `,
+        proofSteps: [
+          {
+            title: 'Langkah 1: Siapkan Trapesium dengan Sisi Sejajar a dan b',
+            desc: 'Perhatikan sebuah trapesium kuning matahari dengan panjang sisi sejajar atas = a, sisi sejajar bawah = b, dan tinggi merah = t.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#FFFBEB"/>
+                <polygon points="90,55 170,55 215,165 65,165" fill="#FDE047" stroke="#D97706" stroke-width="3.5"/>
+                <line x1="90" y1="55" x2="90" y2="165" stroke="#E11D48" stroke-width="2.5" stroke-dasharray="4 3"/>
+                <text x="125" y="45" font-size="13" font-weight="900" fill="#B45309">a</text>
+                <text x="135" y="185" font-size="13" font-weight="900" fill="#0284C7">b</text>
+                <text x="96" y="115" font-size="13" font-weight="900" fill="#E11D48">t</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Langkah 2: Gandakan Trapesium, Putar 180°, dan Gabungkan',
+            desc: 'Buat salinan trapesium berwarna pink/ungu cerah, putar 180°, lalu tempelkan di samping trapesium kuning. Keduanya bergabung membentuk Jajar Genjang besar dengan alas (a + b) dan tinggi t!',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#FFFBEB"/>
+                <!-- First trapezoid -->
+                <polygon points="75,55 155,55 200,165 50,165" fill="#FDE047" stroke="#D97706" stroke-width="3"/>
+                <!-- Second rotated trapezoid -->
+                <polygon points="155,55 305,55 280,165 200,165" fill="#F472B6" fill-opacity="0.8" stroke="#BE185D" stroke-width="3"/>
+                <text x="115" y="45" font-size="12" font-weight="900" fill="#B45309">a</text>
+                <text x="225" y="45" font-size="12" font-weight="900" fill="#BE185D">b</text>
+                <text x="120" y="185" font-size="12" font-weight="900" fill="#B45309">b</text>
+                <text x="235" y="185" font-size="12" font-weight="900" fill="#BE185D">a</text>
+                <text x="180" y="205" text-anchor="middle" font-size="12" font-weight="900" fill="#1E293B">Alas Jajar Genjang = (a + b), Tinggi = t</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Kesimpulan Rumus Luas Trapesium',
+            desc: 'Karena 2 trapesium membentuk 1 jajar genjang berluas (a + b) × t, maka luas 1 trapesium adalah setengahnya: Luas = ½ × (a + b) × t.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#FEF3C7"/>
+                <polygon points="95,45 185,45 235,155 65,155" fill="#F59E0B" fill-opacity="0.32" stroke="#D97706" stroke-width="3.5"/>
+                <rect x="60" y="175" width="240" height="30" rx="10" fill="#D97706"/>
+                <text x="180" y="195" text-anchor="middle" font-size="14" font-weight="900" fill="#FFFFFF">Terbukti: Luas = ½ × (a + b) × t</text>
+              </svg>
+            `
+          }
+        ]
+      },
+      {
+        id: 'belah_ketupat',
+        name: 'Belah Ketupat',
+        shortDesc: '4 sisi sama panjang, diagonal berpotongan tegak lurus',
+        accent: 'pink',
+        pengertian: 'Belah ketupat adalah bangun datar segi empat yang memiliki empat buah sisi sama panjang dan dua pasang sudut berhadapan yang sama besar (bukan 90°). Bentuk ini mirip ketupat lebaran atau rambu lalu lintas berwarna kuning.',
+        sifat: [
+          'Memiliki 4 sisi yang sama panjang (s).',
+          'Sudut-sudut yang berhadapan sama besar.',
+          'Memiliki 2 diagonal (d₁ dan d₂) yang saling berpotongan tegak lurus (90°) dan membagi dua sama panjang.',
+          'Memiliki 2 sumbu simetri lipat dan 2 simetri putar.'
+        ],
+        rumus: {
+          luas: 'L = ½ × d₁ × d₂',
+          keliling: 'K = 4 × s',
+          keterangan: 'Keterangan: d₁ = diagonal 1, d₂ = diagonal 2, s = panjang sisi belah ketupat.'
+        },
+        diagramSVG: `
+          <svg viewBox="0 0 320 230" class="w-full max-w-sm mx-auto">
+            <rect width="320" height="230" rx="16" fill="#FDF2F8"/>
+            <polygon points="160,30 250,115 160,200 70,115" fill="#F9A8D4" fill-opacity="0.7" stroke="#DB2777" stroke-width="4" stroke-linejoin="round"/>
+            <!-- Diagonals -->
+            <line x1="160" y1="30" x2="160" y2="200" stroke="#7E22CE" stroke-width="3" stroke-dasharray="5 4"/>
+            <line x1="70" y1="115" x2="250" y2="115" stroke="#0284C7" stroke-width="3" stroke-dasharray="5 4"/>
+            <!-- Right angle center -->
+            <polyline points="160,103 172,103 172,115" fill="none" stroke="#0F172A" stroke-width="2.5"/>
+            <!-- Labels -->
+            <text x="166" y="75" font-size="13" font-weight="900" fill="#7E22CE">d₂</text>
+            <text x="108" y="108" font-size="13" font-weight="900" fill="#0284C7">d₁</text>
+            <text x="215" y="68" font-size="13" font-weight="900" fill="#BE185D">sisi (s)</text>
+          </svg>
+        `,
+        proofSteps: [
+          {
+            title: 'Langkah 1: Potong Belah Ketupat Sepanjang Diagonal d₁ dan d₂',
+            desc: 'Diagonal d₁ dan d₂ membagi belah ketupat menjadi 4 buah segitiga siku-siku warna-warni yang kongruen (sama besar).',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#FDF2F8"/>
+                <polygon points="180,35 260,110 180,110" fill="#38BDF8" stroke="#0284C7" stroke-width="2.5"/>
+                <polygon points="180,35 100,110 180,110" fill="#F472B6" stroke="#DB2777" stroke-width="2.5"/>
+                <polygon points="180,185 260,110 180,110" fill="#FACC15" stroke="#D97706" stroke-width="2.5"/>
+                <polygon points="180,185 100,110 180,110" fill="#34D399" stroke="#059669" stroke-width="2.5"/>
+                <text x="180" y="208" text-anchor="middle" font-size="13" font-weight="900" fill="#1E293B">4 Segitiga Siku-Siku (Alas = ½ d₁, Tinggi = ½ d₂)</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Langkah 2: Susun Ulang 4 Segitiga Menjadi Persegi Panjang',
+            desc: 'Pindahkan segitiga kuning dan hijau ke bagian atas sehingga membentuk sebuah Persegi Panjang dengan panjang = d₁ dan lebar = ½ d₂.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#FDF2F8"/>
+                <!-- Rectangle of width d1 (160) and height 1/2 d2 (75) -->
+                <polygon points="100,145 180,145 180,70" fill="#F472B6" stroke="#DB2777" stroke-width="2.5"/>
+                <polygon points="100,145 100,70 180,70" fill="#34D399" stroke="#059669" stroke-width="2.5"/>
+                <polygon points="180,145 260,145 180,70" fill="#38BDF8" stroke="#0284C7" stroke-width="2.5"/>
+                <polygon points="260,145 260,70 180,70" fill="#FACC15" stroke="#D97706" stroke-width="2.5"/>
+                <text x="180" y="166" text-anchor="middle" font-size="13" font-weight="900" fill="#0284C7">panjang = d₁</text>
+                <text x="270" y="112" font-size="13" font-weight="900" fill="#DB2777">lebar = ½ d₂</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Kesimpulan Rumus Luas Belah Ketupat',
+            desc: 'Luas persegi panjang tersebut adalah panjang × lebar = d₁ × (½ d₂) = ½ × d₁ × d₂. Terbukti: Luas Belah Ketupat = ½ × d₁ × d₂.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#FCE7F3"/>
+                <polygon points="180,25 245,95 180,165 115,95" fill="#EC4899" fill-opacity="0.28" stroke="#DB2777" stroke-width="3.5"/>
+                <line x1="180" y1="25" x2="180" y2="165" stroke="#7E22CE" stroke-width="2.5" stroke-dasharray="4 3"/>
+                <line x1="115" y1="95" x2="245" y2="95" stroke="#0284C7" stroke-width="2.5" stroke-dasharray="4 3"/>
+                <rect x="65" y="178" width="230" height="28" rx="10" fill="#DB2777"/>
+                <text x="180" y="197" text-anchor="middle" font-size="14" font-weight="900" fill="#FFFFFF">Terbukti: Luas = ½ × d₁ × d₂</text>
+              </svg>
+            `
+          }
+        ]
+      },
+      {
+        id: 'layang_layang',
+        name: 'Layang-Layang',
+        shortDesc: '2 pasang sisi berdekatan sama panjang, diagonal tegak lurus',
+        accent: 'indigo',
+        pengertian: 'Layang-layang adalah bangun datar segi empat yang memiliki dua pasang sisi berdekatan yang sama panjang dan kedua diagonalnya berpotongan saling tegak lurus. Bentuknya persis seperti mainan layang-layang yang diterbangkan di langit.',
+        sifat: [
+          'Memiliki 2 pasang sisi yang berdekatan sama panjang (AB = AD dan BC = CD).',
+          'Memiliki sepasang sudut berhadapan yang sama besar.',
+          'Kedua diagonalnya (d₁ dan d₂) saling berpotongan tegak lurus (90°).',
+          'Salah satu diagonalnya membagi diagonal lainnya menjadi dua bagian sama panjang.',
+          'Memiliki 1 sumbu simetri lipat dan 1 simetri putar.'
+        ],
+        rumus: {
+          luas: 'L = ½ × d₁ × d₂',
+          keliling: 'K = 2 × (sisi pendek + sisi panjang)',
+          keterangan: 'Keterangan: d₁ = diagonal 1, d₂ = diagonal 2.'
+        },
+        diagramSVG: `
+          <svg viewBox="0 0 320 230" class="w-full max-w-sm mx-auto">
+            <rect width="320" height="230" rx="16" fill="#EEF2FF"/>
+            <polygon points="160,25 235,85 160,205 85,85" fill="#A5B4FC" fill-opacity="0.7" stroke="#4F46E5" stroke-width="4" stroke-linejoin="round"/>
+            <!-- Diagonals -->
+            <line x1="160" y1="25" x2="160" y2="205" stroke="#E11D48" stroke-width="3" stroke-dasharray="5 4"/>
+            <line x1="85" y1="85" x2="235" y2="85" stroke="#0284C7" stroke-width="3" stroke-dasharray="5 4"/>
+            <polyline points="160,73 172,73 172,85" fill="none" stroke="#0F172A" stroke-width="2.5"/>
+            <!-- Labels -->
+            <text x="166" y="145" font-size="13" font-weight="900" fill="#E11D48">d₂</text>
+            <text x="115" y="78" font-size="13" font-weight="900" fill="#0284C7">d₁</text>
+            <text x="208" y="55" font-size="12" font-weight="800" fill="#4338CA">sisi a</text>
+            <text x="208" y="155" font-size="12" font-weight="800" fill="#4338CA">sisi b</text>
+          </svg>
+        `,
+        proofSteps: [
+          {
+            title: 'Langkah 1: Letakkan Layang-Layang di Dalam Bingkai Persegi Panjang',
+            desc: 'Buat persegi panjang berukuran panjang d₁ dan lebar d₂ yang tepat menyentuh keempat titik sudut layang-layang ungu/indigo.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#EEF2FF"/>
+                <!-- Outer rectangle d1 x d2 -->
+                <rect x="120" y="25" width="120" height="160" fill="#FEF3C7" stroke="#D97706" stroke-width="2.5" stroke-dasharray="5 4"/>
+                <!-- Kite inside -->
+                <polygon points="180,25 240,75 180,185 120,75" fill="#818CF8" fill-opacity="0.85" stroke="#4338CA" stroke-width="3.5"/>
+                <line x1="180" y1="25" x2="180" y2="185" stroke="#E11D48" stroke-width="2" stroke-dasharray="3 3"/>
+                <line x1="120" y1="75" x2="240" y2="75" stroke="#0284C7" stroke-width="2" stroke-dasharray="3 3"/>
+                <text x="250" y="110" font-size="13" font-weight="900" fill="#E11D48">d₂</text>
+                <text x="180" y="205" text-anchor="middle" font-size="13" font-weight="900" fill="#0284C7">lebar bingkai = d₁</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Langkah 2: Bandingkan 4 Bagian Dalam dengan 4 Bagian Luar',
+            desc: 'Perhatikan keempat kotak kecil! Setiap segitiga layang-layang (indigo) luasnya tepat setengah dari masing-masing kotak kecil (kuning + indigo).',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#EEF2FF"/>
+                <rect x="120" y="25" width="120" height="160" fill="#FDE047" stroke="#D97706" stroke-width="2.5"/>
+                <polygon points="180,25 240,75 180,185 120,75" fill="#818CF8" stroke="#4338CA" stroke-width="3.5"/>
+                <line x1="180" y1="25" x2="180" y2="185" stroke="#0F172A" stroke-width="2"/>
+                <line x1="120" y1="75" x2="240" y2="75" stroke="#0F172A" stroke-width="2"/>
+                <text x="180" y="205" text-anchor="middle" font-size="12" font-weight="900" fill="#4338CA">Luas Indigo = ½ × Luas Persegi Panjang Bingkai</text>
+              </svg>
+            `
+          },
+          {
+            title: 'Kesimpulan Rumus Luas Layang-Layang',
+            desc: 'Karena luas persegi panjang bingkai adalah d₁ × d₂, maka luas layang-layang adalah setengahnya: Luas = ½ × d₁ × d₂.',
+            svg: `
+              <svg viewBox="0 0 360 220" class="w-full max-w-md mx-auto proof-svg">
+                <rect width="360" height="220" rx="16" fill="#E0E7FF"/>
+                <polygon points="180,20 235,68 180,165 125,68" fill="#6366F1" fill-opacity="0.32" stroke="#4F46E5" stroke-width="3.5"/>
+                <rect x="65" y="178" width="230" height="28" rx="10" fill="#4F46E5"/>
+                <text x="180" y="197" text-anchor="middle" font-size="14" font-weight="900" fill="#FFFFFF">Terbukti: Luas = ½ × d₁ × d₂</text>
+              </svg>
+            `
+          }
+        ]
+      }
+    ];
+
+    // =========================================================================
+    // 2. BANK 40 SOAL LATIHAN (5 SOAL PER BANGUN DATAR: MUDAH, SEDANG, SULIT)
+    // =========================================================================
+    const QUESTIONS_DATA = [
+      // --- 1. PERSEGI (5 Soal) ---
+      {
+        id: 'p1', shapeId: 'persegi', difficulty: 'Mudah', type: 'pg',
+        question: 'Sebuah ubin keramik berbentuk persegi memiliki panjang sisi 30 cm. Berapakah luas permukaan ubin keramik tersebut?',
+        options: ['60 cm²', '120 cm²', '900 cm²', '600 cm²'],
+        answer: '900 cm²',
+        pembahasan: {
+          diketahui: 'Bentuk ubin = Persegi, panjang sisi (s) = 30 cm.',
+          ditanya: 'Luas permukaan ubin keramik (L) = ...?',
+          rumus: 'L = s × s',
+          substitusi: 'L = 30 cm × 30 cm',
+          langkah: 'Kalikan panjang sisi dengan dirinya sendiri: 30 × 30 = 900.',
+          hasil: 'Jadi, luas ubin keramik tersebut adalah 900 cm².'
+        }
+      },
+      {
+        id: 'p2', shapeId: 'persegi', difficulty: 'Mudah', type: 'isian', unit: 'cm',
+        question: 'Papan catur milik Raka berbentuk persegi dengan panjang sisi 45 cm. Berapakah keliling papan catur tersebut (dalam cm)?',
+        answer: '180',
+        pembahasan: {
+          diketahui: 'Papan catur berbentuk persegi dengan sisi (s) = 45 cm.',
+          ditanya: 'Keliling papan catur (K) = ...?',
+          rumus: 'K = 4 × s',
+          substitusi: 'K = 4 × 45 cm',
+          langkah: 'Jumlahkan keempat sisinya atau kalikan 4 dengan 45: 4 × 45 = 180.',
+          hasil: 'Jadi, keliling papan catur adalah 180 cm.'
+        }
+      },
+      {
+        id: 'p3', shapeId: 'persegi', difficulty: 'Sedang', type: 'pg',
+        question: 'Sebuah kebun sayur berbentuk persegi memiliki keliling 64 meter. Berapakah luas kebun sayur tersebut?',
+        options: ['16 m²', '128 m²', '256 m²', '512 m²'],
+        answer: '256 m²',
+        pembahasan: {
+          diketahui: 'Keliling kebun persegi (K) = 64 m.',
+          ditanya: 'Luas kebun (L) = ...?',
+          rumus: 'K = 4 × s  →  s = K ÷ 4, kemudian L = s × s',
+          substitusi: 's = 64 ÷ 4 = 16 m; L = 16 × 16',
+          langkah: '1) Cari panjang sisi: s = 64 ÷ 4 = 16 meter.\n2) Hitung luas: L = 16 × 16 = 256 m².',
+          hasil: 'Jadi, luas kebun sayur tersebut adalah 256 m².'
+        }
+      },
+      {
+        id: 'p4', shapeId: 'persegi', difficulty: 'Sedang', type: 'isian', unit: 'cm',
+        question: 'Luas sebuah sapu tangan berbentuk persegi adalah 196 cm². Tentukan panjang sisi sapu tangan tersebut (dalam cm)!',
+        answer: '14',
+        pembahasan: {
+          diketahui: 'Luas persegi (L) = 196 cm².',
+          ditanya: 'Panjang sisi (s) = ...?',
+          rumus: 'L = s²  →  s = √L',
+          substitusi: 's = √196',
+          langkah: 'Cari bilangan yang jika dikalikan dengan dirinya sendiri menghasilkan 196, yaitu 14 × 14 = 196.',
+          hasil: 'Jadi, panjang sisi sapu tangan adalah 14 cm.'
+        }
+      },
+      {
+        id: 'p5', shapeId: 'persegi', difficulty: 'Sulit', type: 'pg',
+        question: 'Ayah ingin memasang pagar kawat di sekeliling kolam ikan berbentuk persegi yang luasnya 144 m². Jika pagar dibuat 2 lilitan kawat, berapa meter panjang kawat yang dibutuhkan?',
+        options: ['48 meter', '96 meter', '144 meter', '288 meter'],
+        answer: '96 meter',
+        pembahasan: {
+          diketahui: 'Luas kolam persegi (L) = 144 m², pagar dipasang 2 lilitan.',
+          ditanya: 'Panjang kawat seluruhnya = ...?',
+          rumus: 's = √L, K = 4 × s, Panjang kawat = 2 × K',
+          substitusi: 's = √144 = 12 m; K = 4 × 12 = 48 m; Kawat = 2 × 48 m',
+          langkah: '1) Panjang sisi kolam s = √144 = 12 m.\n2) Keliling kolam K = 4 × 12 = 48 m.\n3) Karena 2 lilitan: 2 × 48 = 96 meter.',
+          hasil: 'Jadi, panjang kawat yang dibutuhkan adalah 96 meter.'
+        }
+      },
+
+      // --- 2. PERSEGI PANJANG (5 Soal) ---
+      {
+        id: 'pp1', shapeId: 'persegi_panjang', difficulty: 'Mudah', type: 'pg',
+        question: 'Sebuah buku gambar memiliki panjang 28 cm dan lebar 20 cm. Berapakah luas sampul buku gambar tersebut?',
+        options: ['48 cm²', '96 cm²', '560 cm²', '480 cm²'],
+        answer: '560 cm²',
+        pembahasan: {
+          diketahui: 'Panjang (p) = 28 cm, lebar (l) = 20 cm.',
+          ditanya: 'Luas sampul buku (L) = ...?',
+          rumus: 'L = p × l',
+          substitusi: 'L = 28 cm × 20 cm',
+          langkah: 'Kalikan panjang dan lebar: 28 × 20 = 560.',
+          hasil: 'Jadi, luas sampul buku gambar adalah 560 cm².'
+        }
+      },
+      {
+        id: 'pp2', shapeId: 'persegi_panjang', difficulty: 'Mudah', type: 'isian', unit: 'm',
+        question: 'Lapangan futsal sekolah berbentuk persegi panjang dengan panjang 25 m dan lebar 15 m. Berapa meter keliling lapangan tersebut?',
+        answer: '80',
+        pembahasan: {
+          diketahui: 'p = 25 m, l = 15 m.',
+          ditanya: 'Keliling lapangan (K) = ...?',
+          rumus: 'K = 2 × (p + l)',
+          substitusi: 'K = 2 × (25 + 15)',
+          langkah: '1) Jumlahkan panjang dan lebar: 25 + 15 = 40 m.\n2) Kalikan 2: 2 × 40 = 80 m.',
+          hasil: 'Jadi, keliling lapangan futsal adalah 80 m.'
+        }
+      },
+      {
+        id: 'pp3', shapeId: 'persegi_panjang', difficulty: 'Sedang', type: 'pg',
+        question: 'Sebuah ruang kelas memiliki luas lantai 63 m² dan panjang 9 meter. Berapakah lebar ruang kelas tersebut?',
+        options: ['6 meter', '7 meter', '8 meter', '9 meter'],
+        answer: '7 meter',
+        pembahasan: {
+          diketahui: 'Luas (L) = 63 m², panjang (p) = 9 m.',
+          ditanya: 'Lebar ruang kelas (l) = ...?',
+          rumus: 'L = p × l  →  l = L ÷ p',
+          substitusi: 'l = 63 ÷ 9',
+          langkah: 'Bagi luas dengan panjang: 63 ÷ 9 = 7 meter.',
+          hasil: 'Jadi, lebar ruang kelas tersebut adalah 7 meter.'
+        }
+      },
+      {
+        id: 'pp4', shapeId: 'persegi_panjang', difficulty: 'Sedang', type: 'isian', unit: 'cm',
+        question: 'Keliling sebuah bingkai foto berbentuk persegi panjang adalah 70 cm. Jika panjangnya 22 cm, berapakah lebar bingkai tersebut (dalam cm)?',
+        answer: '13',
+        pembahasan: {
+          diketahui: 'Keliling (K) = 70 cm, panjang (p) = 22 cm.',
+          ditanya: 'Lebar (l) = ...?',
+          rumus: 'K = 2 × (p + l)  →  p + l = K ÷ 2',
+          substitusi: '22 + l = 70 ÷ 2  →  22 + l = 35',
+          langkah: '1) Setengah keliling = 70 ÷ 2 = 35 cm.\n2) l = 35 - 22 = 13 cm.',
+          hasil: 'Jadi, lebar bingkai foto adalah 13 cm.'
+        }
+      },
+      {
+        id: 'pp5', shapeId: 'persegi_panjang', difficulty: 'Sulit', type: 'pg',
+        question: 'Dina berlari mengelilingi taman berbentuk persegi panjang berukuran 40 m × 25 m sebanyak 3 putaran penuh. Berapa meter total jarak yang ditempuh Dina?',
+        options: ['130 meter', '260 meter', '390 meter', '3.000 meter'],
+        answer: '390 meter',
+        pembahasan: {
+          diketahui: 'p = 40 m, l = 25 m, banyak putaran = 3 kali.',
+          ditanya: 'Total jarak tempuh = ...?',
+          rumus: 'K = 2 × (p + l), Total Jarak = 3 × K',
+          substitusi: 'K = 2 × (40 + 25) = 2 × 65 = 130 m; Jarak = 3 × 130 m',
+          langkah: '1) Keliling taman K = 2 × (40 + 25) = 130 m.\n2) Jarak 3 putaran = 3 × 130 = 390 meter.',
+          hasil: 'Jadi, total jarak yang ditempuh Dina adalah 390 meter.'
+        }
+      },
+
+      // --- 3. SEGITIGA (5 Soal) ---
+      {
+        id: 'sg1', shapeId: 'segitiga', difficulty: 'Mudah', type: 'pg',
+        question: 'Sebuah rambu lalu lintas berbentuk segitiga memiliki panjang alas 40 cm dan tinggi 35 cm. Berapakah luas rambu lalu lintas tersebut?',
+        options: ['75 cm²', '700 cm²', '1.400 cm²', '350 cm²'],
+        answer: '700 cm²',
+        pembahasan: {
+          diketahui: 'Alas (a) = 40 cm, tinggi (t) = 35 cm.',
+          ditanya: 'Luas segitiga (L) = ...?',
+          rumus: 'L = ½ × a × t',
+          substitusi: 'L = ½ × 40 × 35',
+          langkah: '1) ½ × 40 = 20.\n2) 20 × 35 = 700 cm².',
+          hasil: 'Jadi, luas rambu lalu lintas tersebut adalah 700 cm².'
+        }
+      },
+      {
+        id: 'sg2', shapeId: 'segitiga', difficulty: 'Mudah', type: 'isian', unit: 'cm',
+        question: 'Sebuah penggaris berbentuk segitiga sama sisi memiliki panjang sisi 18 cm. Berapakah keliling penggaris tersebut (dalam cm)?',
+        answer: '54',
+        pembahasan: {
+          diketahui: 'Segitiga sama sisi dengan panjang setiap sisi = 18 cm.',
+          ditanya: 'Keliling segitiga (K) = ...?',
+          rumus: 'K = sisi 1 + sisi 2 + sisi 3 = 3 × s',
+          substitusi: 'K = 18 + 18 + 18',
+          langkah: 'Jumlahkan ketiga sisinya: 18 + 18 + 18 = 54 cm.',
+          hasil: 'Jadi, keliling penggaris segitiga adalah 54 cm.'
+        }
+      },
+      {
+        id: 'sg3', shapeId: 'segitiga', difficulty: 'Sedang', type: 'pg',
+        question: 'Sebuah layar perahu berbentuk segitiga memiliki luas 24 m² dan panjang alas 6 meter. Berapakah tinggi layar perahu tersebut?',
+        options: ['4 meter', '6 meter', '8 meter', '12 meter'],
+        answer: '8 meter',
+        pembahasan: {
+          diketahui: 'Luas (L) = 24 m², alas (a) = 6 m.',
+          ditanya: 'Tinggi layar (t) = ...?',
+          rumus: 'L = ½ × a × t  →  t = (2 × L) ÷ a',
+          substitusi: 't = (2 × 24) ÷ 6',
+          langkah: '1) 2 × 24 = 48.\n2) 48 ÷ 6 = 8 meter.',
+          hasil: 'Jadi, tinggi layar perahu tersebut adalah 8 meter.'
+        }
+      },
+      {
+        id: 'sg4', shapeId: 'segitiga', difficulty: 'Sedang', type: 'isian', unit: 'cm',
+        question: 'Keliling sebuah segitiga sama kaki adalah 50 cm. Jika panjang alasnya 16 cm, berapakah panjang masing-masing kaki segitiga tersebut (dalam cm)?',
+        answer: '17',
+        pembahasan: {
+          diketahui: 'Keliling (K) = 50 cm, alas = 16 cm, dua sisi kaki sama panjang.',
+          ditanya: 'Panjang sisi kaki = ...?',
+          rumus: 'K = alas + 2 × sisi kaki',
+          substitusi: '50 = 16 + 2 × sisi kaki',
+          langkah: '1) Jumlah dua kaki = 50 - 16 = 34 cm.\n2) Panjang satu kaki = 34 ÷ 2 = 17 cm.',
+          hasil: 'Jadi, panjang masing-masing kaki segitiga adalah 17 cm.'
+        }
+      },
+      {
+        id: 'sg5', shapeId: 'segitiga', difficulty: 'Sulit', type: 'pg',
+        question: 'Sebuah taman bunga berbentuk segitiga siku-siku dengan panjang sisi siku-sikunya 12 m dan 16 m, serta sisi miringnya 20 m. Jika biaya penanaman rumput Rp25.000 per m², berapa total biaya penanaman seluruh taman?',
+        options: ['Rp1.200.000', 'Rp2.400.000', 'Rp3.000.000', 'Rp4.800.000'],
+        answer: 'Rp2.400.000',
+        pembahasan: {
+          diketahui: 'Segitiga siku-siku: alas = 12 m, tinggi = 16 m, biaya = Rp25.000/m².',
+          ditanya: 'Total biaya penanaman rumput = ...?',
+          rumus: 'L = ½ × a × t, Total Biaya = L × harga per m²',
+          substitusi: 'L = ½ × 12 × 16 = 96 m²; Biaya = 96 × 25.000',
+          langkah: '1) Luas taman = ½ × 12 × 16 = 96 m².\n2) Total biaya = 96 × Rp25.000 = Rp2.400.000.',
+          hasil: 'Jadi, total biaya penanaman rumput adalah Rp2.400.000.'
+        }
+      },
+
+      // --- 4. LINGKARAN (5 Soal) ---
+      {
+        id: 'lk1', shapeId: 'lingkaran', difficulty: 'Mudah', type: 'pg',
+        question: 'Sebuah piring makan berbentuk lingkaran memiliki jari-jari 14 cm. Berapakah luas permukaan piring tersebut? (Gunakan π = 22/7)',
+        options: ['88 cm²', '154 cm²', '616 cm²', '308 cm²'],
+        answer: '616 cm²',
+        pembahasan: {
+          diketahui: 'Jari-jari (r) = 14 cm, π = 22/7.',
+          ditanya: 'Luas lingkaran (L) = ...?',
+          rumus: 'L = π × r²',
+          substitusi: 'L = (22/7) × 14 × 14',
+          langkah: '1) Bagi 14 dengan 7 hasilnya 2.\n2) L = 22 × 2 × 14 = 44 × 14 = 616 cm².',
+          hasil: 'Jadi, luas permukaan piring adalah 616 cm².'
+        }
+      },
+      {
+        id: 'lk2', shapeId: 'lingkaran', difficulty: 'Mudah', type: 'isian', unit: 'cm',
+        question: 'Sebuah jam dinding berbentuk lingkaran memiliki diameter 28 cm. Berapakah keliling jam dinding tersebut dalam cm? (π = 22/7)',
+        answer: '88',
+        pembahasan: {
+          diketahui: 'Diameter (d) = 28 cm, π = 22/7.',
+          ditanya: 'Keliling jam dinding (K) = ...?',
+          rumus: 'K = π × d',
+          substitusi: 'K = (22/7) × 28',
+          langkah: '1) 28 ÷ 7 = 4.\n2) K = 22 × 4 = 88 cm.',
+          hasil: 'Jadi, keliling jam dinding adalah 88 cm.'
+        }
+      },
+      {
+        id: 'lk3', shapeId: 'lingkaran', difficulty: 'Sedang', type: 'pg',
+        question: 'Sebuah meja bundar memiliki diameter 100 cm. Berapakah luas permukaan meja tersebut? (Gunakan π = 3,14)',
+        options: ['314 cm²', '3.140 cm²', '7.850 cm²', '31.400 cm²'],
+        answer: '7.850 cm²',
+        pembahasan: {
+          diketahui: 'Diameter (d) = 100 cm → jari-jari (r) = 100 ÷ 2 = 50 cm, π = 3,14.',
+          ditanya: 'Luas meja bundar (L) = ...?',
+          rumus: 'L = π × r²',
+          substitusi: 'L = 3,14 × 50 × 50',
+          langkah: '1) 50 × 50 = 2.500.\n2) L = 3,14 × 2.500 = 7.850 cm².',
+          hasil: 'Jadi, luas permukaan meja bundar adalah 7.850 cm².'
+        }
+      },
+      {
+        id: 'lk4', shapeId: 'lingkaran', difficulty: 'Sedang', type: 'isian', unit: 'cm',
+        question: 'Keliling sebuah hula hoop berbentuk lingkaran adalah 132 cm. Berapakah panjang jari-jari hula hoop tersebut dalam cm? (π = 22/7)',
+        answer: '21',
+        pembahasan: {
+          diketahui: 'Keliling (K) = 132 cm, π = 22/7.',
+          ditanya: 'Jari-jari (r) = ...?',
+          rumus: 'K = 2 × π × r  →  r = K ÷ (2 × π)',
+          substitusi: '132 = 2 × (22/7) × r  →  132 = (44/7) × r',
+          langkah: 'r = 132 × 7 ÷ 44 = 3 × 7 = 21 cm.',
+          hasil: 'Jadi, jari-jari hula hoop tersebut adalah 21 cm.'
+        }
+      },
+      {
+        id: 'lk5', shapeId: 'lingkaran', difficulty: 'Sulit', type: 'pg',
+        question: 'Sebuah roda sepeda memiliki jari-jari 35 cm. Jika roda tersebut berputar penuh sebanyak 100 kali di jalan lurus, berapa meter jarak yang ditempuh sepeda? (π = 22/7)',
+        options: ['110 meter', '220 meter', '385 meter', '22.000 meter'],
+        answer: '220 meter',
+        pembahasan: {
+          diketahui: 'r = 35 cm, banyak putaran = 100 kali, π = 22/7.',
+          ditanya: 'Jarak tempuh dalam meter = ...?',
+          rumus: 'K = 2 × π × r, Jarak = K × putaran',
+          substitusi: 'K = 2 × (22/7) × 35 = 220 cm; Jarak = 220 cm × 100',
+          langkah: '1) Keliling roda K = 2 × 22 × 5 = 220 cm.\n2) Jarak 100 putaran = 220 × 100 = 22.000 cm.\n3) Ubah ke meter: 22.000 ÷ 100 = 220 meter.',
+          hasil: 'Jadi, jarak yang ditempuh sepeda adalah 220 meter.'
+        }
+      },
+
+      // --- 5. JAJAR GENJANG (5 Soal) ---
+      {
+        id: 'jg1', shapeId: 'jajar_genjang', difficulty: 'Mudah', type: 'pg',
+        question: 'Sebuah hiasan dinding berbentuk jajar genjang memiliki panjang alas 24 cm dan tinggi 15 cm. Berapakah luas hiasan dinding tersebut?',
+        options: ['39 cm²', '78 cm²', '180 cm²', '360 cm²'],
+        answer: '360 cm²',
+        pembahasan: {
+          diketahui: 'Alas (a) = 24 cm, tinggi (t) = 15 cm.',
+          ditanya: 'Luas jajar genjang (L) = ...?',
+          rumus: 'L = a × t',
+          substitusi: 'L = 24 × 15',
+          langkah: 'Kalikan alas dan tinggi: 24 × 15 = 360 cm².',
+          hasil: 'Jadi, luas hiasan dinding adalah 360 cm².'
+        }
+      },
+      {
+        id: 'jg2', shapeId: 'jajar_genjang', difficulty: 'Mudah', type: 'isian', unit: 'cm',
+        question: 'Sebuah bangun jajar genjang memiliki panjang alas 16 cm dan sisi miring 11 cm. Berapakah keliling jajar genjang tersebut (dalam cm)?',
+        answer: '54',
+        pembahasan: {
+          diketahui: 'Alas (a) = 16 cm, sisi miring (b) = 11 cm.',
+          ditanya: 'Keliling jajar genjang (K) = ...?',
+          rumus: 'K = 2 × (a + b)',
+          substitusi: 'K = 2 × (16 + 11)',
+          langkah: '1) 16 + 11 = 27 cm.\n2) K = 2 × 27 = 54 cm.',
+          hasil: 'Jadi, keliling jajar genjang tersebut adalah 54 cm.'
+        }
+      },
+      {
+        id: 'jg3', shapeId: 'jajar_genjang', difficulty: 'Sedang', type: 'pg',
+        question: 'Luas sebidang lahan parkir berbentuk jajar genjang adalah 180 m². Jika panjang alasnya 15 meter, berapakah tinggi lahan parkir tersebut?',
+        options: ['10 meter', '12 meter', '14 meter', '15 meter'],
+        answer: '12 meter',
+        pembahasan: {
+          diketahui: 'Luas (L) = 180 m², alas (a) = 15 m.',
+          ditanya: 'Tinggi (t) = ...?',
+          rumus: 'L = a × t  →  t = L ÷ a',
+          substitusi: 't = 180 ÷ 15',
+          langkah: 'Bagi luas dengan alas: 180 ÷ 15 = 12 meter.',
+          hasil: 'Jadi, tinggi lahan parkir tersebut adalah 12 meter.'
+        }
+      },
+      {
+        id: 'jg4', shapeId: 'jajar_genjang', difficulty: 'Sedang', type: 'isian', unit: 'cm',
+        question: 'Keliling sebuah jajar genjang adalah 68 cm. Jika panjang alasnya 20 cm, berapakah panjang sisi miringnya (dalam cm)?',
+        answer: '14',
+        pembahasan: {
+          diketahui: 'Keliling (K) = 68 cm, alas (a) = 20 cm.',
+          ditanya: 'Sisi miring (b) = ...?',
+          rumus: 'K = 2 × (a + b)  →  a + b = K ÷ 2',
+          substitusi: '20 + b = 68 ÷ 2  →  20 + b = 34',
+          langkah: '1) 68 ÷ 2 = 34 cm.\n2) b = 34 - 20 = 14 cm.',
+          hasil: 'Jadi, panjang sisi miring jajar genjang adalah 14 cm.'
+        }
+      },
+      {
+        id: 'jg5', shapeId: 'jajar_genjang', difficulty: 'Sulit', type: 'pg',
+        question: 'Diketahui jajar genjang ABCD dengan panjang AB = 18 cm, BC = 12 cm, dan tinggi yang tegak lurus dengan AB adalah 8 cm. Berapakah tinggi jajar genjang jika diukur tegak lurus terhadap sisi BC?',
+        options: ['6 cm', '9 cm', '12 cm', '15 cm'],
+        answer: '12 cm',
+        pembahasan: {
+          diketahui: 'Alas 1 (AB) = 18 cm dengan tinggi 1 = 8 cm; Alas 2 (BC) = 12 cm.',
+          ditanya: 'Tinggi 2 (t₂) yang tegak lurus BC = ...?',
+          rumus: 'Luas = AB × t₁ = BC × t₂',
+          substitusi: '18 × 8 = 12 × t₂  →  144 = 12 × t₂',
+          langkah: '1) Hitung luas jajar genjang: 18 × 8 = 144 cm².\n2) Gunakan alas BC: t₂ = 144 ÷ 12 = 12 cm.',
+          hasil: 'Jadi, tinggi terhadap sisi BC adalah 12 cm.'
+        }
+      },
+
+      // --- 6. TRAPESIUM (5 Soal) ---
+      {
+        id: 'tr1', shapeId: 'trapesium', difficulty: 'Mudah', type: 'pg',
+        question: 'Sebuah meja belajar memiliki permukaan berbentuk trapesium dengan panjang sisi sejajar 80 cm dan 120 cm, serta tinggi 50 cm. Berapakah luas permukaan meja tersebut?',
+        options: ['2.500 cm²', '5.000 cm²', '10.000 cm²', '4.800 cm²'],
+        answer: '5.000 cm²',
+        pembahasan: {
+          diketahui: 'Sisi sejajar a = 80 cm, b = 120 cm, tinggi (t) = 50 cm.',
+          ditanya: 'Luas trapesium (L) = ...?',
+          rumus: 'L = ½ × (a + b) × t',
+          substitusi: 'L = ½ × (80 + 120) × 50',
+          langkah: '1) Jumlah sisi sejajar: 80 + 120 = 200 cm.\n2) L = ½ × 200 × 50 = 100 × 50 = 5.000 cm².',
+          hasil: 'Jadi, luas permukaan meja adalah 5.000 cm².'
+        }
+      },
+      {
+        id: 'tr2', shapeId: 'trapesium', difficulty: 'Mudah', type: 'isian', unit: 'cm',
+        question: 'Sebuah trapesium sama kaki memiliki panjang sisi atas 10 cm, sisi bawah 22 cm, dan panjang kedua sisi miringnya masing-masing 10 cm. Berapakah keliling trapesium tersebut (dalam cm)?',
+        answer: '52',
+        pembahasan: {
+          diketahui: 'Sisi atas = 10 cm, sisi bawah = 22 cm, sisi miring kiri = 10 cm, sisi miring kanan = 10 cm.',
+          ditanya: 'Keliling trapesium (K) = ...?',
+          rumus: 'K = jumlah seluruh panjang sisi',
+          substitusi: 'K = 10 + 22 + 10 + 10',
+          langkah: 'Jumlahkan seluruh sisinya: 10 + 22 + 10 + 10 = 52 cm.',
+          hasil: 'Jadi, keliling trapesium sama kaki tersebut adalah 52 cm.'
+        }
+      },
+      {
+        id: 'tr3', shapeId: 'trapesium', difficulty: 'Sedang', type: 'pg',
+        question: 'Luas sebuah genteng atap rumah berbentuk trapesium adalah 210 cm². Jika panjang kedua sisi sejajarnya 12 cm dan 18 cm, berapakah tinggi genteng tersebut?',
+        options: ['7 cm', '12 cm', '14 cm', '15 cm'],
+        answer: '14 cm',
+        pembahasan: {
+          diketahui: 'Luas (L) = 210 cm², a = 12 cm, b = 18 cm.',
+          ditanya: 'Tinggi (t) = ...?',
+          rumus: 'L = ½ × (a + b) × t  →  t = (2 × L) ÷ (a + b)',
+          substitusi: 't = (2 × 210) ÷ (12 + 18)',
+          langkah: '1) 2 × 210 = 420.\n2) a + b = 12 + 18 = 30.\n3) t = 420 ÷ 30 = 14 cm.',
+          hasil: 'Jadi, tinggi genteng tersebut adalah 14 cm.'
+        }
+      },
+      {
+        id: 'tr4', shapeId: 'trapesium', difficulty: 'Sedang', type: 'isian', unit: 'm',
+        question: 'Sebuah kolam renang anak berbentuk trapesium memiliki luas 60 m², tinggi 6 m, dan panjang salah satu sisi sejajarnya 8 m. Berapa meter panjang sisi sejajar yang satunya?',
+        answer: '12',
+        pembahasan: {
+          diketahui: 'L = 60 m², t = 6 m, a = 8 m.',
+          ditanya: 'Sisi sejajar lainnya (b) = ...?',
+          rumus: 'L = ½ × (a + b) × t',
+          substitusi: '60 = ½ × (8 + b) × 6  →  60 = 3 × (8 + b)',
+          langkah: '1) 8 + b = 60 ÷ 3 = 20.\n2) b = 20 - 8 = 12 meter.',
+          hasil: 'Jadi, panjang sisi sejajar yang satunya adalah 12 m.'
+        }
+      },
+      {
+        id: 'tr5', shapeId: 'trapesium', difficulty: 'Sulit', type: 'pg',
+        question: 'Sebuah trapesium siku-siku memiliki panjang sisi sejajar 14 cm dan 22 cm, serta tinggi 6 cm. Jika panjang sisi miringnya 10 cm, berapakah keliling trapesium siku-siku tersebut?',
+        options: ['46 cm', '52 cm', '56 cm', '108 cm'],
+        answer: '52 cm',
+        pembahasan: {
+          diketahui: 'Trapesium siku-siku: sisi atas = 14 cm, sisi bawah = 22 cm, sisi tegak (tinggi) = 6 cm, sisi miring = 10 cm.',
+          ditanya: 'Keliling trapesium (K) = ...?',
+          rumus: 'K = sisi atas + sisi bawah + sisi tegak + sisi miring',
+          substitusi: 'K = 14 + 22 + 6 + 10',
+          langkah: 'Jumlahkan keempat sisi luarnya: 14 + 22 + 6 + 10 = 52 cm.',
+          hasil: 'Jadi, keliling trapesium siku-siku tersebut adalah 52 cm.'
+        }
+      },
+
+      // --- 7. BELAH KETUPAT (5 Soal) ---
+      {
+        id: 'bk1', shapeId: 'belah_ketupat', difficulty: 'Mudah', type: 'pg',
+        question: 'Sebuah ketupat hiasan lebaran berbentuk belah ketupat memiliki panjang diagonal 16 cm dan 20 cm. Berapakah luas permukaan hiasan tersebut?',
+        options: ['36 cm²', '72 cm²', '160 cm²', '320 cm²'],
+        answer: '160 cm²',
+        pembahasan: {
+          diketahui: 'Diagonal 1 (d₁) = 16 cm, diagonal 2 (d₂) = 20 cm.',
+          ditanya: 'Luas belah ketupat (L) = ...?',
+          rumus: 'L = ½ × d₁ × d₂',
+          substitusi: 'L = ½ × 16 × 20',
+          langkah: '1) ½ × 16 = 8.\n2) 8 × 20 = 160 cm².',
+          hasil: 'Jadi, luas hiasan belah ketupat tersebut adalah 160 cm².'
+        }
+      },
+      {
+        id: 'bk2', shapeId: 'belah_ketupat', difficulty: 'Mudah', type: 'isian', unit: 'cm',
+        question: 'Sebuah rambu jalan berbentuk belah ketupat memiliki panjang sisi 25 cm. Berapakah keliling rambu tersebut (dalam cm)?',
+        answer: '100',
+        pembahasan: {
+          diketahui: 'Panjang sisi belah ketupat (s) = 25 cm.',
+          ditanya: 'Keliling (K) = ...?',
+          rumus: 'K = 4 × s',
+          substitusi: 'K = 4 × 25',
+          langkah: 'Keempat sisi belah ketupat sama panjang: 4 × 25 = 100 cm.',
+          hasil: 'Jadi, keliling rambu belah ketupat adalah 100 cm.'
+        }
+      },
+      {
+        id: 'bk3', shapeId: 'belah_ketupat', difficulty: 'Sedang', type: 'pg',
+        question: 'Luas sebuah belah ketupat adalah 150 cm². Jika panjang salah satu diagonalnya adalah 15 cm, berapakah panjang diagonal yang lainnya?',
+        options: ['10 cm', '15 cm', '20 cm', '25 cm'],
+        answer: '20 cm',
+        pembahasan: {
+          diketahui: 'Luas (L) = 150 cm², d₁ = 15 cm.',
+          ditanya: 'Diagonal kedua (d₂) = ...?',
+          rumus: 'L = ½ × d₁ × d₂  →  d₂ = (2 × L) ÷ d₁',
+          substitusi: 'd₂ = (2 × 150) ÷ 15',
+          langkah: '1) 2 × 150 = 300.\n2) 300 ÷ 15 = 20 cm.',
+          hasil: 'Jadi, panjang diagonal lainnya adalah 20 cm.'
+        }
+      },
+      {
+        id: 'bk4', shapeId: 'belah_ketupat', difficulty: 'Sedang', type: 'isian', unit: 'cm',
+        question: 'Keliling sebuah taman kecil berbentuk belah ketupat adalah 92 meter. Berapa meter panjang setiap sisi taman tersebut?',
+        answer: '23',
+        pembahasan: {
+          diketahui: 'Keliling belah ketupat (K) = 92 m.',
+          ditanya: 'Panjang sisi (s) = ...?',
+          rumus: 'K = 4 × s  →  s = K ÷ 4',
+          substitusi: 's = 92 ÷ 4',
+          langkah: 'Bagi keliling dengan 4: 92 ÷ 4 = 23 meter.',
+          hasil: 'Jadi, panjang setiap sisi taman adalah 23 m.'
+        }
+      },
+      {
+        id: 'bk5', shapeId: 'belah_ketupat', difficulty: 'Sulit', type: 'pg',
+        question: 'Sebuah lantai aula akan dipasangi keramik motif belah ketupat dengan diagonal 30 cm dan 40 cm. Jika luas lantai aula adalah 12 m² (120.000 cm²), berapa buah keramik yang diperlukan?',
+        options: ['100 buah', '150 buah', '200 buah', '250 buah'],
+        answer: '200 buah',
+        pembahasan: {
+          diketahui: 'd₁ = 30 cm, d₂ = 40 cm, Luas lantai = 120.000 cm².',
+          ditanya: 'Banyak keramik yang dibutuhkan = ...?',
+          rumus: 'L keramik = ½ × d₁ × d₂, Banyak keramik = L lantai ÷ L keramik',
+          substitusi: 'L keramik = ½ × 30 × 40 = 600 cm²; Banyak = 120.000 ÷ 600',
+          langkah: '1) Luas 1 keramik = ½ × 30 × 40 = 600 cm².\n2) Jumlah keramik = 120.000 ÷ 600 = 200 buah.',
+          hasil: 'Jadi, dibutuhkan 200 buah keramik.'
+        }
+      },
+
+      // --- 8. LAYANG-LAYANG (5 Soal) ---
+      {
+        id: 'll1', shapeId: 'layang_layang', difficulty: 'Mudah', type: 'pg',
+        question: 'Budi membuat layang-layang dengan panjang rangka bambu (diagonal) 40 cm dan 65 cm. Berapakah luas kertas minyak minimal yang dibutuhkan untuk menutupinya?',
+        options: ['105 cm²', '210 cm²', '1.300 cm²', '2.600 cm²'],
+        answer: '1.300 cm²',
+        pembahasan: {
+          diketahui: 'Diagonal 1 (d₁) = 40 cm, diagonal 2 (d₂) = 65 cm.',
+          ditanya: 'Luas layang-layang (L) = ...?',
+          rumus: 'L = ½ × d₁ × d₂',
+          substitusi: 'L = ½ × 40 × 65',
+          langkah: '1) ½ × 40 = 20.\n2) 20 × 65 = 1.300 cm².',
+          hasil: 'Jadi, luas kertas minyak yang dibutuhkan adalah 1.300 cm².'
+        }
+      },
+      {
+        id: 'll2', shapeId: 'layang_layang', difficulty: 'Mudah', type: 'isian', unit: 'cm',
+        question: 'Sebuah layang-layang memiliki panjang sisi pendek 15 cm dan sisi panjang 28 cm. Berapakah keliling layang-layang tersebut (dalam cm)?',
+        answer: '86',
+        pembahasan: {
+          diketahui: 'Sisi pendek = 15 cm, sisi panjang = 28 cm.',
+          ditanya: 'Keliling layang-layang (K) = ...?',
+          rumus: 'K = 2 × (sisi pendek + sisi panjang)',
+          substitusi: 'K = 2 × (15 + 28)',
+          langkah: '1) 15 + 28 = 43 cm.\n2) K = 2 × 43 = 86 cm.',
+          hasil: 'Jadi, keliling layang-layang adalah 86 cm.'
+        }
+      },
+      {
+        id: 'll3', shapeId: 'layang_layang', difficulty: 'Sedang', type: 'pg',
+        question: 'Luas sebuah layang-layang hias adalah 480 cm². Jika panjang salah satu diagonalnya 32 cm, berapakah panjang diagonal yang lainnya?',
+        options: ['15 cm', '24 cm', '30 cm', '32 cm'],
+        answer: '30 cm',
+        pembahasan: {
+          diketahui: 'Luas (L) = 480 cm², d₁ = 32 cm.',
+          ditanya: 'Diagonal kedua (d₂) = ...?',
+          rumus: 'L = ½ × d₁ × d₂  →  d₂ = (2 × L) ÷ d₁',
+          substitusi: 'd₂ = (2 × 480) ÷ 32',
+          langkah: '1) 2 × 480 = 960.\n2) 960 ÷ 32 = 30 cm.',
+          hasil: 'Jadi, panjang diagonal lainnya adalah 30 cm.'
+        }
+      },
+      {
+        id: 'll4', shapeId: 'layang_layang', difficulty: 'Sedang', type: 'isian', unit: 'cm',
+        question: 'Keliling sebuah layang-layang adalah 110 cm. Jika panjang sisi pendeknya 20 cm, berapakah panjang sisi panjangnya (dalam cm)?',
+        answer: '35',
+        pembahasan: {
+          diketahui: 'Keliling (K) = 110 cm, sisi pendek = 20 cm.',
+          ditanya: 'Sisi panjang = ...?',
+          rumus: 'K = 2 × (sisi pendek + sisi panjang)',
+          substitusi: '110 = 2 × (20 + sisi panjang)',
+          langkah: '1) 20 + sisi panjang = 110 ÷ 2 = 55 cm.\n2) Sisi panjang = 55 - 20 = 35 cm.',
+          hasil: 'Jadi, panjang sisi panjangnya adalah 35 cm.'
+        }
+      },
+      {
+        id: 'll5', shapeId: 'layang_layang', difficulty: 'Sulit', type: 'pg',
+        question: 'Edo ingin membuat 5 buah layang-layang yang sama berukuran diagonal 30 cm dan 40 cm. Jika tersedia selembar kertas besar berukuran 100 cm × 40 cm (luas 4.000 cm²), berapakah sisa kertas yang tidak terpakai?',
+        options: ['600 cm²', '1.000 cm²', '3.000 cm²', '3.400 cm²'],
+        answer: '1.000 cm²',
+        pembahasan: {
+          diketahui: '5 layang-layang (d₁ = 30 cm, d₂ = 40 cm), luas kertas tersedia = 4.000 cm².',
+          ditanya: 'Sisa kertas = ...?',
+          rumus: 'L 1 layang-layang = ½ × d₁ × d₂, Total terpakai = 5 × L',
+          substitusi: 'L 1 layang-layang = ½ × 30 × 40 = 600 cm²; Total = 5 × 600 = 3.000 cm²',
+          langkah: '1) Luas 1 layang-layang = 600 cm².\n2) Luas 5 layang-layang = 5 × 600 = 3.000 cm².\n3) Sisa kertas = 4.000 - 3.000 = 1.000 cm².',
+          hasil: 'Jadi, sisa kertas yang tidak terpakai adalah 1.000 cm².'
+        }
+      }
+    ];
+
+    // =========================================================================
+    // 3. BANK SOAL KUIS PILIHAN GANDA (CAMPURAN SEMUA BANGUN DATAR)
+    // =========================================================================
+    const QUIZ_POOL = [
+      ...QUESTIONS_DATA.filter(q => q.type === 'pg').map(q => ({
+        topic: SHAPES_DATA.find(s => s.id === q.shapeId).name,
+        question: q.question,
+        options: q.options,
+        answer: q.answer,
+        explanation: `${q.pembahasan.rumus} → ${q.pembahasan.substitusi}. ${q.pembahasan.hasil}`
+      })),
+      {
+        topic: 'Persegi',
+        question: 'Jumlah sumbu simetri lipat dan simetri putar pada bangun persegi berturut-turut adalah...',
+        options: ['2 dan 2', '4 dan 2', '4 dan 4', 'Tak terhingga'],
+        answer: '4 dan 4',
+        explanation: 'Persegi memiliki 4 sisi sama panjang dan 4 sudut siku-siku sehingga memiliki 4 simetri lipat dan 4 simetri putar.'
+      },
+      {
+        topic: 'Segitiga',
+        question: 'Jika dua buah segitiga yang kongruen (sama bentuk dan ukuran) digabungkan pada salah satu sisinya, bangun datar yang terbentuk adalah...',
+        options: ['Lingkaran', 'Trapesium', 'Jajar genjang atau persegi panjang', 'Segi lima'],
+        answer: 'Jajar genjang atau persegi panjang',
+        explanation: 'Inilah dasar pembuktian luas segitiga: 2 segitiga kongruen = 1 jajar genjang/persegi panjang, sehingga luas segitiga = ½ × a × t.'
+      },
+      {
+        topic: 'Lingkaran',
+        question: 'Dalam pembuktian luas lingkaran, jika juring-juring lingkaran disusun zig-zag menyerupai persegi panjang, maka sisi panjangnya setara dengan...',
+        options: ['Diameter lingkaran (d)', 'Jari-jari lingkaran (r)', 'Setengah keliling lingkaran (π × r)', 'Keliling penuh lingkaran (2πr)'],
+        answer: 'Setengah keliling lingkaran (π × r)',
+        explanation: 'Separuh busur juring berada di sisi atas dan separuh lainnya di sisi bawah, sehingga panjangnya = ½ × 2πr = π × r.'
+      },
+      {
+        topic: 'Belah Ketupat',
+        question: 'Perbedaan utama antara belah ketupat dan persegi terletak pada...',
+        options: ['Panjang keempat sisinya', 'Besar keempat sudutnya', 'Jumlah sisinya', 'Sifat diagonal yang tegak lurus'],
+        answer: 'Besar keempat sudutnya',
+        explanation: 'Keduanya memiliki 4 sisi sama panjang, namun keempat sudut persegi wajib 90°, sedangkan sudut belah ketupat tidak harus 90°.'
+      },
+      {
+        topic: 'Trapesium',
+        question: 'Bangun datar segi empat yang memiliki tepat sepasang sisi yang sejajar adalah...',
+        options: ['Jajar genjang', 'Layang-layang', 'Trapesium', 'Belah ketupat'],
+        answer: 'Trapesium',
+        explanation: 'Trapesium didefinisikan sebagai segi empat dengan tepat satu pasang sisi berhadapan yang sejajar.'
+      },
+      {
+        topic: 'Layang-Layang',
+        question: 'Sebuah layang-layang memiliki diagonal 18 cm dan 24 cm. Luas layang-layang tersebut adalah...',
+        options: ['42 cm²', '216 cm²', '432 cm²', '108 cm²'],
+        answer: '216 cm²',
+        explanation: 'Luas = ½ × d₁ × d₂ = ½ × 18 × 24 = 9 × 24 = 216 cm².'
+      }
+    ];
+
+    // =========================================================================
+    // 4. APPLICATION STATE & LOCALSTORAGE PERSISTENCE
+    // =========================================================================
+    const STORAGE_KEY = 'geometry_learning_smp7_v1';
+
+    let appState = {
+      currentView: 'home',
+      selectedMateriShape: 'persegi',
+      proofStepIndex: 0,
+      selectedLatihanShape: 'persegi',
+      completedMateri: [], // array of shapeIds
+      exerciseResults: {}, // { [questionId]: { userAnswer, isCorrect, checked, showExplanation } }
+      bestQuizScore: null,
+      quizAttempts: 0
+    };
+
+    // Quiz Runtime State (not saved to localStorage mid-quiz)
+    let quizSession = {
+      questions: [],
+      currentIndex: 0,
+      userAnswers: [],
+      timeLeft: 600,
+      timerInterval: null
+    };
+
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          appState = {
+            ...appState,
+            completedMateri: Array.isArray(parsed.completedMateri) ? parsed.completedMateri : [],
+            exerciseResults: parsed.exerciseResults || {},
+            bestQuizScore: typeof parsed.bestQuizScore === 'number' ? parsed.bestQuizScore : null,
+            quizAttempts: parsed.quizAttempts || 0
+          };
+        }
+      } catch (e) {
+        console.warn('Gagal memuat progres dari localStorage:', e);
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          completedMateri: appState.completedMateri,
+          exerciseResults: appState.exerciseResults,
+          bestQuizScore: appState.bestQuizScore,
+          quizAttempts: appState.quizAttempts
+        }));
+      } catch (e) {
+        console.warn('Gagal menyimpan progres:', e);
+      }
+      updateProgressUI();
+    }
+
+    // =========================================================================
+    // 5. NAVIGATION & UI HELPERS
+    // =========================================================================
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      const styles = {
+        success: 'bg-emerald-600 text-white border-emerald-500',
+        warning: 'bg-amber-500 text-white border-amber-400',
+        info: 'bg-brandBlue-600 text-white border-brandBlue-500'
+      };
+      toast.className = `pointer-events-auto px-4 py-3 rounded-2xl shadow-lg border font-bold text-xs sm:text-sm flex items-center gap-2.5 animate-pop ${styles[type] || styles.info}`;
+      toast.innerHTML = `<span>${message}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(8px)';
+        toast.style.transition = 'all 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 3200);
+    }
+
+    function toggleMobileMenu(forceState) {
+      const menu = document.getElementById('mobile-menu');
+      if (typeof forceState === 'boolean') {
+        menu.classList.toggle('hidden', !forceState);
+      } else {
+        menu.classList.toggle('hidden');
+      }
+    }
+
+    function navigateTo(viewName) {
+      appState.currentView = viewName;
+
+      // Hide all sections
+      ['home', 'materi', 'latihan', 'kuis', 'progres'].forEach(v => {
+        const el = document.getElementById(`view-${v}`);
+        if (el) el.classList.add('hidden');
+      });
+
+      // Show active section
+      const activeSection = document.getElementById(`view-${viewName}`);
+      if (activeSection) {
+        activeSection.classList.remove('hidden');
+      }
+
+      // Update active nav button styles for vibrant navbar
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        const target = btn.getAttribute('data-nav');
+        if (target === viewName) {
+          btn.classList.add('bg-white', 'text-indigo-800', 'shadow-md');
+          btn.classList.remove('text-white/90', 'hover:bg-white/15', 'hover:text-white');
+        } else {
+          btn.classList.remove('bg-white', 'text-indigo-800', 'shadow-md');
+          btn.classList.add('text-white/90', 'hover:bg-white/15', 'hover:text-white');
+        }
+      });
+
+      // Render view-specific content
+      if (viewName === 'home') renderHomeGrid();
+      if (viewName === 'materi') renderMateriView();
+      if (viewName === 'latihan') renderLatihanView();
+      if (viewName === 'progres') renderProgresDashboard();
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      lucide.createIcons();
+    }
+
+    function openShapeMateri(shapeId) {
+      appState.selectedMateriShape = shapeId;
+      appState.proofStepIndex = 0;
+      navigateTo('materi');
+    }
+
+    function openShapeLatihan(shapeId) {
+      appState.selectedLatihanShape = shapeId;
+      navigateTo('latihan');
+    }
+
+    // =========================================================================
+    // 6. RENDER HOME PAGE QUICK GRID (WITH DISTINCT COLOR THEME PER SHAPE)
+    // =========================================================================
+    function renderHomeGrid() {
+      const grid = document.getElementById('home-shapes-grid');
+      if (!grid) return;
+
+      grid.innerHTML = SHAPES_DATA.map((shape, idx) => {
+        const theme = SHAPE_THEMES[shape.id] || SHAPE_THEMES.persegi;
+        const isDone = appState.completedMateri.includes(shape.id);
+        const shapeQuestions = QUESTIONS_DATA.filter(q => q.shapeId === shape.id);
+        const correctCount = shapeQuestions.filter(q => appState.exerciseResults[q.id]?.isCorrect).length;
+
+        return `
+          <div class="${theme.cardBg} rounded-3xl p-5 border-2 ${isDone ? 'border-emerald-400' : theme.border} shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 flex flex-col justify-between gap-4 group">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="w-8 h-8 rounded-xl ${theme.badgeBg} font-display font-black text-sm flex items-center justify-center shadow-xs">
+                  ${idx + 1}
+                </span>
+                ${isDone
+                  ? `<span class="px-2.5 py-1 rounded-full bg-emerald-500 text-white text-[11px] font-extrabold flex items-center gap-1 shadow-xs"><i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Dipelajari</span>`
+                  : `<span class="px-2.5 py-1 rounded-full ${theme.softBadge} text-[11px] font-extrabold">Latihan: ${correctCount}/5</span>`
+                }
+              </div>
+              <h3 class="font-display font-black text-lg text-slate-800 group-hover:text-indigo-700 transition-colors">${shape.name}</h3>
+              <p class="text-xs text-slate-600 font-medium mt-1 leading-relaxed">${shape.shortDesc}</p>
+            </div>
+
+            <div class="flex items-center gap-2 pt-2 border-t border-slate-200/70">
+              <button onclick="openShapeMateri('${shape.id}')" class="flex-1 py-2 px-3 rounded-xl ${theme.btnSoft} font-extrabold text-xs transition-colors">
+                Materi
+              </button>
+              <button onclick="openShapeLatihan('${shape.id}')" class="flex-1 py-2 px-3 rounded-xl ${theme.btnPrimary} font-extrabold text-xs transition-colors shadow-xs">
+                Latihan (5)
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    // =========================================================================
+    // 7. RENDER MATERI & PEMBUKTIAN RUMUS INTERAKTIF
+    // =========================================================================
+    function selectMateriShape(shapeId) {
+      appState.selectedMateriShape = shapeId;
+      appState.proofStepIndex = 0;
+      renderMateriView();
+    }
+
+    function changeProofStep(delta) {
+      const shape = SHAPES_DATA.find(s => s.id === appState.selectedMateriShape);
+      if (!shape) return;
+      const maxIdx = shape.proofSteps.length - 1;
+      appState.proofStepIndex = Math.max(0, Math.min(maxIdx, appState.proofStepIndex + delta));
+      renderMateriView();
+    }
+
+    function setProofStep(idx) {
+      appState.proofStepIndex = idx;
+      renderMateriView();
+    }
+
+    function toggleMateriCompleted(shapeId) {
+      const idx = appState.completedMateri.indexOf(shapeId);
+      const shape = SHAPES_DATA.find(s => s.id === shapeId);
+      if (idx === -1) {
+        appState.completedMateri.push(shapeId);
+        showToast(`Materi "${shape.name}" ditandai sudah dipelajari!`, 'success');
+      } else {
+        appState.completedMateri.splice(idx, 1);
+        showToast(`Status materi "${shape.name}" dibatalkan.`, 'info');
+      }
+      saveState();
+      renderMateriView();
+    }
+
+    function renderMateriView() {
+      // 1. Render Shape Selector Pills with Distinct Colors
+      const tabsEl = document.getElementById('materi-shape-tabs');
+      tabsEl.innerHTML = SHAPES_DATA.map((s, i) => {
+        const theme = SHAPE_THEMES[s.id] || SHAPE_THEMES.persegi;
+        const isActive = s.id === appState.selectedMateriShape;
+        const isDone = appState.completedMateri.includes(s.id);
+        return `
+          <button onclick="selectMateriShape('${s.id}')" class="shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 border-2 ${
+            isActive
+              ? `${theme.tabActive} border-transparent scale-[1.02]`
+              : `bg-white hover:bg-slate-50 text-slate-700 ${theme.border}`
+          }">
+            <span>${i + 1}. ${s.name}</span>
+            ${isDone ? `<i data-lucide="check-circle-2" class="w-4 h-4 ${isActive ? 'text-amber-200' : 'text-emerald-600'}"></i>` : ''}
+          </button>
+        `;
+      }).join('');
+
+      // 2. Render Selected Shape Content
+      const shape = SHAPES_DATA.find(s => s.id === appState.selectedMateriShape) || SHAPES_DATA[0];
+      const theme = SHAPE_THEMES[shape.id] || SHAPE_THEMES.persegi;
+      const isCompleted = appState.completedMateri.includes(shape.id);
+      const stepIdx = appState.proofStepIndex;
+      const currentStep = shape.proofSteps[stepIdx];
+      const totalSteps = shape.proofSteps.length;
+
+      const container = document.getElementById('materi-content-container');
+      container.innerHTML = `
+        <!-- Header Banner for Selected Shape with Custom Theme Gradient -->
+        <div class="bg-gradient-to-r ${theme.heroGrad} rounded-3xl p-6 sm:p-8 text-white flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-lg border-2 border-white/30">
+          <div>
+            <span class="px-3 py-1 rounded-full bg-white/25 text-xs font-extrabold uppercase tracking-wider">Bangun Datar</span>
+            <h3 class="font-display font-black text-2xl sm:text-4xl mt-2 drop-shadow-xs">${shape.name}</h3>
+            <p class="text-white/95 font-medium text-sm mt-1">${shape.shortDesc}</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2.5">
+            <button onclick="toggleMateriCompleted('${shape.id}')" class="px-5 py-3 rounded-2xl font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-md ${
+              isCompleted
+                ? 'bg-emerald-500 hover:bg-emerald-600 text-white'
+                : 'bg-amber-300 hover:bg-amber-200 text-slate-900'
+            }">
+              <i data-lucide="${isCompleted ? 'check-circle-2' : 'circle'}" class="w-4 h-4"></i>
+              ${isCompleted ? 'Sudah Dipelajari ✓' : 'Tandai Materi Sudah Dipelajari'}
+            </button>
+            <button onclick="openShapeLatihan('${shape.id}')" class="px-5 py-3 rounded-2xl bg-white/20 hover:bg-white/30 border-2 border-white/40 text-white font-extrabold text-xs sm:text-sm flex items-center gap-2">
+              <i data-lucide="pen-tool" class="w-4 h-4"></i> Latihan Soal ${shape.name}
+            </button>
+          </div>
+        </div>
+
+        <!-- Grid: A. Pengertian, B. Sifat-Sifat, C. Gambar Bangun Datar, D. Rumus -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Left Column (A & B) -->
+          <div class="lg:col-span-7 space-y-6">
+            <!-- A. Pengertian (Sky Blue Tint) -->
+            <div class="bg-gradient-to-br from-sky-50 via-white to-blue-50/80 rounded-3xl p-6 border-2 border-sky-200 shadow-sm space-y-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 text-white font-display font-black text-sm flex items-center justify-center shadow-xs">A</span>
+                <h4 class="font-display font-black text-xl text-sky-950">Pengertian ${shape.name}</h4>
+              </div>
+              <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+                ${shape.pengertian}
+              </p>
+            </div>
+
+            <!-- B. Sifat-Sifat (Purple Lavender Tint) -->
+            <div class="bg-gradient-to-br from-purple-50 via-white to-fuchsia-50/80 rounded-3xl p-6 border-2 border-purple-200 shadow-sm space-y-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-600 to-pink-500 text-white font-display font-black text-sm flex items-center justify-center shadow-xs">B</span>
+                <h4 class="font-display font-black text-xl text-purple-950">Sifat-Sifat ${shape.name}</h4>
+              </div>
+              <ul class="space-y-2.5 pt-1">
+                ${shape.sifat.map(item => `
+                  <li class="flex items-start gap-2.5 text-sm sm:text-base text-slate-700">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-pink-500 shrink-0 mt-0.5"></i>
+                    <span>${item}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right Column (C & D) -->
+          <div class="lg:col-span-5 space-y-6">
+            <!-- C. Gambar Bangun Datar (Mint / Toska Tint) -->
+            <div class="bg-gradient-to-br from-teal-50 via-white to-emerald-50/80 rounded-3xl p-6 border-2 border-teal-200 shadow-sm space-y-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-600 text-white font-display font-black text-sm flex items-center justify-center shadow-xs">C</span>
+                <h4 class="font-display font-black text-xl text-teal-950">Gambar Bangun Datar</h4>
+              </div>
+              <div class="py-2">
+                ${shape.diagramSVG}
+              </div>
+            </div>
+
+            <!-- D. Rumus (Sun Amber + Blue + Purple Card) -->
+            <div class="formula-card rounded-3xl p-6 shadow-sm space-y-4">
+              <div class="flex items-center gap-2.5">
+                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 text-white font-display font-black text-sm flex items-center justify-center shadow-xs">D</span>
+                <h4 class="font-display font-black text-xl text-amber-950">Rumus Luas & Keliling</h4>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="bg-white/95 rounded-2xl p-4 border-2 border-sky-300 shadow-xs">
+                  <div class="text-xs font-black uppercase tracking-wider text-sky-600 mb-1">Rumus Luas (L)</div>
+                  <div class="font-display font-black text-lg sm:text-xl text-slate-800">${shape.rumus.luas}</div>
+                </div>
+                <div class="bg-white/95 rounded-2xl p-4 border-2 border-pink-300 shadow-xs">
+                  <div class="text-xs font-black uppercase tracking-wider text-pink-600 mb-1">Rumus Keliling (K)</div>
+                  <div class="font-display font-black text-lg sm:text-xl text-slate-800">${shape.rumus.keliling}</div>
+                </div>
+              </div>
+              <p class="text-xs font-bold text-slate-700 bg-white/85 px-3.5 py-2.5 rounded-xl border border-amber-200">
+                ${shape.rumus.keterangan}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- E. PEMBUKTIAN RUMUS INTERAKTIF & BERTAHAP -->
+        <div class="bg-gradient-to-br from-white via-indigo-50/40 to-pink-50/40 rounded-3xl p-6 sm:p-8 border-2 ${theme.border} shadow-md space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200/70 pb-4">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-gradient-to-br ${theme.heroGrad} text-white font-display font-black text-base flex items-center justify-center shadow-sm">E</span>
+              <div>
+                <h4 class="font-display font-black text-xl sm:text-2xl text-slate-800">Pembuktian Asal-Usul Rumus Luas ${shape.name}</h4>
+                <p class="text-xs sm:text-sm text-slate-600">Klik tombol tahap demi tahap untuk memahami bagaimana rumus ditemukan!</p>
+              </div>
+            </div>
+            <span class="self-start sm:self-auto px-4 py-1.5 rounded-full ${theme.badgeBg} font-extrabold text-xs shadow-xs">
+              Tahap ${stepIdx + 1} dari ${totalSteps}
+            </span>
+          </div>
+
+          <!-- Step Dots Indicator -->
+          <div class="flex items-center justify-center gap-2">
+            ${shape.proofSteps.map((_, idx) => `
+              <button onclick="setProofStep(${idx})" class="h-3 rounded-full transition-all ${
+                idx === stepIdx ? `w-11 ${theme.badgeBg}` : 'w-3 bg-slate-200 hover:bg-purple-300'
+              }" aria-label="Tahap ${idx + 1}"></button>
+            `).join('')}
+          </div>
+
+          <!-- Interactive Proof Stage -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center bg-white/90 rounded-3xl p-4 sm:p-6 border-2 border-slate-200/80 shadow-inner">
+            <div class="lg:col-span-6">
+              ${currentStep.svg}
+            </div>
+            <div class="lg:col-span-6 space-y-4">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl ${theme.softBadge} font-extrabold text-xs">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Visualisasi Bertahap
+              </div>
+              <h5 class="font-display font-black text-lg sm:text-xl text-slate-800">
+                ${currentStep.title}
+              </h5>
+              <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+                ${currentStep.desc}
+              </p>
+
+              <!-- Step Navigation Buttons -->
+              <div class="pt-2 flex flex-wrap items-center gap-3">
+                <button onclick="changeProofStep(-1)" ${stepIdx === 0 ? 'disabled' : ''} class="px-4 py-2.5 rounded-xl bg-slate-100 border border-slate-300 hover:bg-slate-200 text-slate-800 font-extrabold text-xs sm:text-sm flex items-center gap-1.5 disabled:opacity-40 disabled:pointer-events-none transition-colors">
+                  <i data-lucide="chevron-left" class="w-4 h-4"></i> Langkah Sebelumnya
+                </button>
+                <button onclick="changeProofStep(1)" ${stepIdx === totalSteps - 1 ? 'disabled' : ''} class="px-5 py-2.5 rounded-xl bg-gradient-to-r ${theme.heroGrad} text-white font-extrabold text-xs sm:text-sm flex items-center gap-1.5 disabled:opacity-40 disabled:pointer-events-none shadow-md transition-all hover:scale-[1.02]">
+                  Langkah Berikutnya <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      lucide.createIcons();
+    }
+
+    // =========================================================================
+    // 8. RENDER LATIHAN SOAL & SISTEM PEMERIKSAAN + PEMBAHASAN BERTAHAP
+    // =========================================================================
+    function selectLatihanShape(shapeId) {
+      appState.selectedLatihanShape = shapeId;
+      renderLatihanView();
+    }
+
+    function selectMcqOption(questionId, optionValue) {
+      const existing = appState.exerciseResults[questionId] || {};
+      appState.exerciseResults[questionId] = {
+        ...existing,
+        userAnswer: optionValue,
+        checked: false,
+        showExplanation: false
+      };
+      renderLatihanView();
+    }
+
+    function updateInputAnswer(questionId, val) {
+      const existing = appState.exerciseResults[questionId] || {};
+      appState.exerciseResults[questionId] = {
+        ...existing,
+        userAnswer: val
+      };
+    }
+
+    function checkExerciseAnswer(questionId) {
+      const q = QUESTIONS_DATA.find(item => item.id === questionId);
+      if (!q) return;
+
+      let userVal = '';
+      if (q.type === 'isian') {
+        const inputEl = document.getElementById(`input-${questionId}`);
+        userVal = inputEl ? inputEl.value.trim() : '';
+      } else {
+        userVal = (appState.exerciseResults[questionId]?.userAnswer || '').trim();
+      }
+
+      if (!userVal) {
+        showToast('Silakan pilih atau ketik jawabanmu terlebih dahulu sebelum memeriksa!', 'warning');
+        return;
+      }
+
+      // Normalize numeric or text comparison
+      const normUser = userVal.replace(',', '.').toLowerCase();
+      const normCorrect = q.answer.replace(',', '.').toLowerCase();
+      const isCorrect = normUser === normCorrect;
+
+      appState.exerciseResults[questionId] = {
+        userAnswer: userVal,
+        isCorrect: isCorrect,
+        checked: true,
+        showExplanation: false // Must click "Lihat Pembahasan" explicitly
+      };
+
+      saveState();
+      renderLatihanView();
+    }
+
+    function toggleExerciseExplanation(questionId) {
+      const rec = appState.exerciseResults[questionId];
+      if (!rec || !rec.checked) return;
+      rec.showExplanation = !rec.showExplanation;
+      saveState();
+      renderLatihanView();
+    }
+
+    function renderLatihanView() {
+      // Update summary badge
+      const totalCorrect = Object.values(appState.exerciseResults).filter(r => r.isCorrect).length;
+      const badge = document.getElementById('latihan-summary-badge');
+      if (badge) {
+        badge.innerHTML = `<i data-lucide="check-square" class="w-4 h-4"></i><span>Terjawab Benar: ${totalCorrect} / ${QUESTIONS_DATA.length} Soal</span>`;
+      }
+
+      // Render shape filter tabs with vibrant per-shape themes
+      const tabsEl = document.getElementById('latihan-shape-tabs');
+      tabsEl.innerHTML = SHAPES_DATA.map((s, i) => {
+        const theme = SHAPE_THEMES[s.id] || SHAPE_THEMES.persegi;
+        const isActive = s.id === appState.selectedLatihanShape;
+        const shapeQs = QUESTIONS_DATA.filter(q => q.shapeId === s.id);
+        const solved = shapeQs.filter(q => appState.exerciseResults[q.id]?.isCorrect).length;
+        return `
+          <button onclick="selectLatihanShape('${s.id}')" class="shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 border-2 ${
+            isActive
+              ? `${theme.tabActive} border-transparent`
+              : `bg-white hover:bg-slate-50 text-slate-700 ${theme.border}`
+          }">
+            <span>${i + 1}. ${s.name}</span>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-black ${
+              isActive ? 'bg-white/25 text-white' : theme.softBadge
+            }">${solved}/5</span>
+          </button>
+        `;
+      }).join('');
+
+      // Render 5 questions for active shape
+      const activeTheme = SHAPE_THEMES[appState.selectedLatihanShape] || SHAPE_THEMES.persegi;
+      const filteredQs = QUESTIONS_DATA.filter(q => q.shapeId === appState.selectedLatihanShape);
+      const listEl = document.getElementById('latihan-questions-list');
+
+      listEl.innerHTML = filteredQs.map((q, idx) => {
+        const state = appState.exerciseResults[q.id] || {};
+        const diffBadge = {
+          'Mudah': 'bg-emerald-500 text-white',
+          'Sedang': 'bg-amber-500 text-white',
+          'Sulit': 'bg-rose-500 text-white'
+        }[q.difficulty] || 'bg-slate-200 text-slate-700';
+
+        return `
+          <div class="bg-white/95 rounded-3xl p-5 sm:p-7 border-2 ${activeTheme.border} shadow-sm space-y-5">
+            <!-- Question Header -->
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-xl ${activeTheme.badgeBg} font-display font-black text-xs sm:text-sm shadow-xs">
+                  Soal #${idx + 1}
+                </span>
+                <span class="px-3 py-1 rounded-xl ${diffBadge} font-extrabold text-xs shadow-xs">
+                  Tingkat: ${q.difficulty}
+                </span>
+                <span class="px-3 py-1 rounded-xl bg-purple-100 text-purple-800 border border-purple-200 font-extrabold text-xs">
+                  ${q.type === 'pg' ? 'Pilihan Ganda' : 'Isian Singkat'}
+                </span>
+              </div>
+              ${state.checked ? (
+                state.isCorrect
+                  ? `<span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-extrabold flex items-center gap-1"><i data-lucide="check-circle-2" class="w-4 h-4"></i> Selesai Benar</span>`
+                  : `<span class="px-3 py-1 rounded-full bg-rose-100 text-rose-700 text-xs font-extrabold flex items-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> Perlu Diperbaiki</span>`
+              ) : ''}
+            </div>
+
+            <!-- Question Text -->
+            <p class="text-slate-800 font-bold text-base sm:text-lg leading-relaxed">
+              ${q.question}
+            </p>
+
+            <!-- Answer Input Area -->
+            <div>
+              ${q.type === 'pg' ? `
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  ${q.options.map((opt, oIdx) => {
+                    const letter = ['A', 'B', 'C', 'D'][oIdx];
+                    const isSelected = state.userAnswer === opt;
+                    return `
+                      <button onclick="selectMcqOption('${q.id}', '${opt.replace(/'/g, "\\'")}')" class="text-left p-3.5 rounded-2xl border-2 transition-all flex items-center gap-3 ${
+                        isSelected
+                          ? 'border-indigo-600 bg-gradient-to-r from-sky-50 to-purple-50 text-indigo-900 font-extrabold shadow-xs'
+                          : 'border-slate-200 hover:border-purple-300 hover:bg-purple-50/40 text-slate-700 font-semibold'
+                      }">
+                        <span class="w-8 h-8 rounded-xl flex items-center justify-center text-xs font-black shrink-0 ${
+                          isSelected ? 'bg-gradient-to-br from-blue-600 to-purple-600 text-white' : 'bg-slate-100 text-slate-600'
+                        }">${letter}</span>
+                        <span class="text-sm sm:text-base">${opt}</span>
+                      </button>
+                    `;
+                  }).join('')}
+                </div>
+              ` : `
+                <div class="flex flex-wrap items-center gap-3 max-w-md">
+                  <div class="relative flex-1 min-w-[180px]">
+                    <input
+                      id="input-${q.id}"
+                      type="text"
+                      inputmode="numeric"
+                      value="${state.userAnswer || ''}"
+                      oninput="updateInputAnswer('${q.id}', this.value)"
+                      onkeydown="if(event.key==='Enter') checkExerciseAnswer('${q.id}')"
+                      placeholder="Ketik angka jawabanmu..."
+                      class="w-full px-4 py-3 rounded-2xl border-2 border-purple-300 focus:border-blue-600 focus:outline-none font-extrabold text-slate-800 text-base bg-purple-50/30"
+                    />
+                  </div>
+                  ${q.unit ? `<span class="px-4 py-3 rounded-2xl bg-sky-100 text-sky-800 font-black text-sm border-2 border-sky-200">${q.unit}</span>` : ''}
+                </div>
+              `}
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-3 pt-1">
+              <button onclick="checkExerciseAnswer('${q.id}')" class="px-5 py-3 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-extrabold text-xs sm:text-sm shadow-md flex items-center gap-2 transition-all active:scale-95">
+                <i data-lucide="check-circle" class="w-4 h-4"></i> Periksa Jawaban
+              </button>
+
+              <!-- STRICT RULE: "Lihat Pembahasan" ONLY appears AFTER student submits answer -->
+              ${state.checked ? `
+                <button onclick="toggleExerciseExplanation('${q.id}')" class="px-5 py-3 rounded-2xl bg-amber-300 hover:bg-amber-400 text-slate-900 font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-colors shadow-xs">
+                  <i data-lucide="${state.showExplanation ? 'eye-off' : 'book-open-check'}" class="w-4 h-4"></i>
+                  ${state.showExplanation ? 'Sembunyikan Pembahasan' : 'Lihat Pembahasan'}
+                </button>
+              ` : ''}
+            </div>
+
+            <!-- Feedback Banner (Shown after checking) -->
+            ${state.checked ? (
+              state.isCorrect ? `
+                <div class="p-4 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50 border-2 border-emerald-300 text-emerald-900 flex items-center gap-3 animate-pop">
+                  <div class="w-9 h-9 rounded-xl bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-xs">
+                    <i data-lucide="party-popper" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="font-display font-black text-base">Hebat! Jawaban kamu benar</div>
+                    <div class="text-xs text-emerald-700 font-semibold">Kamu dapat menekan tombol "Lihat Pembahasan" untuk meninjau langkah lengkapnya.</div>
+                  </div>
+                </div>
+              ` : `
+                <div class="p-4 rounded-2xl bg-gradient-to-r from-rose-50 to-pink-50 border-2 border-rose-300 text-rose-900 flex items-center gap-3 animate-pop">
+                  <div class="w-9 h-9 rounded-xl bg-rose-500 text-white flex items-center justify-center shrink-0 shadow-xs">
+                    <i data-lucide="alert-circle" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="font-display font-black text-base">Belum tepat, coba periksa kembali jawabanmu</div>
+                    <div class="text-xs text-rose-700 font-semibold">Coba hitung ulang atau klik "Lihat Pembahasan" untuk mempelajari langkah penyelesaiannya.</div>
+                  </div>
+                </div>
+              `
+            ) : ''}
+
+            <!-- Step-by-step Structured Explanation (ONLY if checked AND showExplanation is true) -->
+            ${state.checked && state.showExplanation ? `
+              <div class="rounded-3xl bg-gradient-to-br from-sky-50 via-purple-50 to-amber-50 border-2 border-purple-300 p-5 sm:p-6 space-y-3 animate-pop">
+                <div class="flex items-center gap-2 text-purple-800 font-display font-black text-base sm:text-lg border-b border-purple-200 pb-2.5">
+                  <i data-lucide="file-check-2" class="w-5 h-5 text-pink-600"></i>
+                  <span>Pembahasan Langkah demi Langkah</span>
+                </div>
+                <div class="grid grid-cols-1 gap-2.5 text-xs sm:text-sm">
+                  <div class="bg-white/95 p-3 rounded-xl border border-sky-200">
+                    <span class="font-extrabold text-sky-700 block mb-0.5">1. Diketahui:</span>
+                    <span class="text-slate-700 font-medium">${q.pembahasan.diketahui}</span>
+                  </div>
+                  <div class="bg-white/95 p-3 rounded-xl border border-sky-200">
+                    <span class="font-extrabold text-sky-700 block mb-0.5">2. Ditanya:</span>
+                    <span class="text-slate-700 font-medium">${q.pembahasan.ditanya}</span>
+                  </div>
+                  <div class="bg-white/95 p-3 rounded-xl border border-purple-200">
+                    <span class="font-extrabold text-purple-700 block mb-0.5">3. Rumus yang digunakan:</span>
+                    <span class="font-display font-black text-slate-800">${q.pembahasan.rumus}</span>
+                  </div>
+                  <div class="bg-white/95 p-3 rounded-xl border border-amber-200">
+                    <span class="font-extrabold text-amber-700 block mb-0.5">4. Substitusi angka ke dalam rumus:</span>
+                    <span class="text-slate-700 font-bold">${q.pembahasan.substitusi}</span>
+                  </div>
+                  <div class="bg-white/95 p-3 rounded-xl border border-indigo-200">
+                    <span class="font-extrabold text-indigo-700 block mb-0.5">5. Langkah-langkah perhitungan:</span>
+                    <span class="text-slate-700 whitespace-pre-line font-medium">${q.pembahasan.langkah}</span>
+                  </div>
+                  <div class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white p-3.5 rounded-xl font-extrabold shadow-xs">
+                    <span class="uppercase text-[11px] tracking-wider text-emerald-100 block">6. Hasil Akhir:</span>
+                    <span>${q.pembahasan.hasil}</span>
+                  </div>
+                </div>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    // =========================================================================
+    // 9. FITUR KUIS INTERAKTIF (10 SOAL ACAK, TIMER, SKOR OTOMATIS, REVIEW)
+    // =========================================================================
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function startQuiz() {
+      // Pick 10 random questions from QUIZ_POOL
+      const picked = shuffleArray(QUIZ_POOL).slice(0, 10).map(q => ({
+        ...q,
+        shuffledOptions: shuffleArray(q.options)
+      }));
+
+      quizSession = {
+        questions: picked,
+        currentIndex: 0,
+        userAnswers: new Array(10).fill(null),
+        timeLeft: 600, // 10 minutes
+        timerInterval: null
+      };
+
+      document.getElementById('quiz-start-screen').classList.add('hidden');
+      document.getElementById('quiz-result-screen').classList.add('hidden');
+      document.getElementById('quiz-active-screen').classList.remove('hidden');
+
+      renderQuizQuestion();
+      startQuizTimer();
+    }
+
+    function startQuizTimer() {
+      if (quizSession.timerInterval) clearInterval(quizSession.timerInterval);
+      updateTimerDisplay();
+
+      quizSession.timerInterval = setInterval(() => {
+        quizSession.timeLeft--;
+        updateTimerDisplay();
+
+        if (quizSession.timeLeft <= 0) {
+          clearInterval(quizSession.timerInterval);
+          finishQuiz(true);
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(quizSession.timeLeft / 60);
+      const secs = quizSession.timeLeft % 60;
+      const el = document.getElementById('quiz-timer');
+      if (el) {
+        el.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      }
+    }
+
+    function selectQuizOption(optionVal) {
+      quizSession.userAnswers[quizSession.currentIndex] = optionVal;
+      renderQuizQuestion();
+    }
+
+    function jumpToQuizQuestion(idx) {
+      quizSession.currentIndex = idx;
+      renderQuizQuestion();
+    }
+
+    function prevQuizQuestion() {
+      if (quizSession.currentIndex > 0) {
+        quizSession.currentIndex--;
+        renderQuizQuestion();
+      }
+    }
+
+    function nextQuizQuestion() {
+      if (quizSession.currentIndex < quizSession.questions.length - 1) {
+        quizSession.currentIndex++;
+        renderQuizQuestion();
+      }
+    }
+
+    function renderQuizQuestion() {
+      const idx = quizSession.currentIndex;
+      const q = quizSession.questions[idx];
+      const selected = quizSession.userAnswers[idx];
+
+      document.getElementById('quiz-q-counter').textContent = `Soal ${idx + 1} / 10`;
+      document.getElementById('quiz-q-topic').textContent = `Materi: ${q.topic}`;
+
+      // Nav Pills
+      const pillsEl = document.getElementById('quiz-nav-pills');
+      pillsEl.innerHTML = quizSession.questions.map((_, i) => {
+        const isCurrent = i === idx;
+        const isAnswered = quizSession.userAnswers[i] !== null;
+        return `
+          <button onclick="jumpToQuizQuestion(${i})" class="w-9 h-9 rounded-xl font-extrabold text-xs transition-all border ${
+            isCurrent
+              ? 'bg-brandBlue-600 text-white border-brandBlue-600 scale-105 shadow-sm'
+              : isAnswered
+                ? 'bg-brandPurple-100 text-brandPurple-700 border-brandPurple-300'
+                : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
+          }">
+            ${i + 1}
+          </button>
+        `;
+      }).join('');
+
+      // Question Card
+      const cardEl = document.getElementById('quiz-question-card');
+      cardEl.innerHTML = `
+        <p class="text-slate-800 font-bold text-base sm:text-xl leading-relaxed">
+          ${idx + 1}. ${q.question}
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          ${q.shuffledOptions.map((opt, oIdx) => {
+            const letter = ['A', 'B', 'C', 'D'][oIdx];
+            const isSel = selected === opt;
+            return `
+              <button onclick="selectQuizOption('${opt.replace(/'/g, "\\'")}')" class="text-left p-4 rounded-2xl border-2 transition-all flex items-center gap-3.5 ${
+                isSel
+                  ? 'border-brandBlue-600 bg-brandBlue-50 text-brandBlue-800 font-extrabold shadow-xs'
+                  : 'border-slate-200 hover:border-brandPurple-300 hover:bg-brandPurple-50/40 text-slate-700 font-semibold'
+              }">
+                <span class="w-8 h-8 rounded-xl flex items-center justify-center text-xs font-black shrink-0 ${
+                  isSel ? 'bg-brandBlue-600 text-white' : 'bg-slate-100 text-slate-600'
+                }">${letter}</span>
+                <span class="text-sm sm:text-base">${opt}</span>
+              </button>
+            `;
+          }).join('')}
+        </div>
+      `;
+
+      // Prev / Next / Submit buttons
+      const prevBtn = document.getElementById('quiz-prev-btn');
+      const nextBtn = document.getElementById('quiz-next-btn');
+      const submitBtn = document.getElementById('quiz-submit-btn');
+
+      prevBtn.disabled = idx === 0;
+      if (idx === quizSession.questions.length - 1) {
+        nextBtn.classList.add('hidden');
+        submitBtn.classList.remove('hidden');
+      } else {
+        nextBtn.classList.remove('hidden');
+        submitBtn.classList.add('hidden');
+      }
+
+      lucide.createIcons();
+    }
+
+    function finishQuiz(isTimeOut = false) {
+      if (quizSession.timerInterval) {
+        clearInterval(quizSession.timerInterval);
+        quizSession.timerInterval = null;
+      }
+
+      let correctCount = 0;
+      quizSession.questions.forEach((q, i) => {
+        if (quizSession.userAnswers[i] === q.answer) {
+          correctCount++;
+        }
+      });
+
+      const wrongCount = 10 - correctCount;
+      const score = correctCount * 10;
+
+      // Save best quiz score
+      appState.quizAttempts += 1;
+      if (appState.bestQuizScore === null || score > appState.bestQuizScore) {
+        appState.bestQuizScore = score;
+      }
+      saveState();
+
+      if (isTimeOut) {
+        showToast('Waktu habis! Kuis telah diselesaikan secara otomatis.', 'warning');
+      }
+
+      document.getElementById('quiz-active-screen').classList.add('hidden');
+      const resScreen = document.getElementById('quiz-result-screen');
+      resScreen.classList.remove('hidden');
+
+      const predicate = score >= 90 ? 'Luar Biasa! Sangat Memuaskan'
+        : score >= 75 ? 'Hebat! Pemahamanmu Sudah Baik'
+        : score >= 60 ? 'Cukup Baik, Terus Berlatih!'
+        : 'Tetap Semangat! Pelajari Lagi Materinya';
+
+      resScreen.innerHTML = `
+        <div class="bg-white rounded-3xl p-6 sm:p-10 border border-brandPurple-200 shadow-md text-center space-y-6">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brandBlue-50 text-brandBlue-700 font-extrabold text-xs">
+            Hasil Evaluasi Kuis Interaktif
+          </div>
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Skor Akhir Kamu</div>
+            <div class="font-display font-black text-5xl sm:text-6xl bg-gradient-to-r from-brandBlue-600 to-brandPurple-600 bg-clip-text text-transparent my-1">
+              ${score}
+            </div>
+            <p class="font-display font-extrabold text-lg sm:text-xl text-slate-800">${predicate}</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 max-w-md mx-auto">
+            <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl">
+              <div class="font-display font-black text-2xl text-emerald-600">${correctCount}</div>
+              <div class="text-xs font-bold text-emerald-800">Jawaban Benar</div>
+            </div>
+            <div class="bg-rose-50 border border-rose-200 p-4 rounded-2xl">
+              <div class="font-display font-black text-2xl text-rose-600">${wrongCount}</div>
+              <div class="text-xs font-bold text-rose-800">Jawaban Salah</div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+            <button onclick="startQuiz()" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-brandBlue-600 to-brandPurple-600 hover:from-brandBlue-700 hover:to-brandPurple-700 text-white font-extrabold text-sm shadow-md flex items-center gap-2">
+              <i data-lucide="refresh-cw" class="w-4 h-4"></i> Ulangi Kuis (Soal Baru)
+            </button>
+            <button onclick="navigateTo('progres')" class="px-6 py-3.5 rounded-2xl bg-brandPurple-100 hover:bg-brandPurple-200 text-brandPurple-800 font-extrabold text-sm flex items-center gap-2">
+              <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Lihat Progres Belajar
+            </button>
+          </div>
+        </div>
+
+        <!-- Detailed Review of All 10 Quiz Questions -->
+        <div class="space-y-4">
+          <h3 class="font-display font-extrabold text-xl text-slate-800">Keterangan Jawaban Benar & Salah</h3>
+          ${quizSession.questions.map((q, i) => {
+            const uAns = quizSession.userAnswers[i];
+            const isRight = uAns === q.answer;
+            return `
+              <div class="bg-white rounded-2xl p-5 border ${isRight ? 'border-emerald-200' : 'border-rose-200'} shadow-xs space-y-2">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-xs font-extrabold text-brandPurple-600">Soal #${i + 1} • ${q.topic}</span>
+                  <span class="px-2.5 py-1 rounded-full text-xs font-extrabold ${isRight ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">
+                    ${isRight ? '✓ Benar' : '✗ Salah'}
+                  </span>
+                </div>
+                <p class="font-bold text-slate-800 text-sm sm:text-base">${q.question}</p>
+                <div class="text-xs sm:text-sm space-y-1 pt-1">
+                  <div>
+                    <span class="text-slate-500">Jawabanmu: </span>
+                    <span class="font-extrabold ${isRight ? 'text-emerald-700' : 'text-rose-600'}">${uAns || '(Tidak dijawab)'}</span>
+                  </div>
+                  ${!isRight ? `
+                    <div>
+                      <span class="text-slate-500">Kunci Jawaban: </span>
+                      <span class="font-extrabold text-emerald-700">${q.answer}</span>
+                    </div>
+                  ` : ''}
+                  <div class="mt-2 p-3 rounded-xl bg-slate-50 text-slate-600 text-xs">
+                    <strong>Pembahasan Singkat:</strong> ${q.explanation}
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+
+      lucide.createIcons();
+    }
+
+    // =========================================================================
+    // 10. PROGRES BELAJAR DASHBOARD & HEADER INDICATOR
+    // =========================================================================
+    function calculateProgressMetrics() {
+      const materiDone = appState.completedMateri.length;
+      const totalMateri = SHAPES_DATA.length; // 8
+
+      const checkedEntries = Object.values(appState.exerciseResults).filter(r => r.checked);
+      const attemptedCount = checkedEntries.length;
+      const correctCount = checkedEntries.filter(r => r.isCorrect).length;
+      const totalQuestions = QUESTIONS_DATA.length; // 40
+
+      const latihanScore = Math.round((correctCount / totalQuestions) * 100);
+      const materiPercent = (materiDone / totalMateri) * 50;
+      const latihanPercent = (correctCount / totalQuestions) * 50;
+      const overallPercent = Math.round(materiPercent + latihanPercent);
+
+      return {
+        materiDone,
+        totalMateri,
+        attemptedCount,
+        correctCount,
+        totalQuestions,
+        latihanScore,
+        overallPercent
+      };
+    }
+
+    function updateProgressUI() {
+      const m = calculateProgressMetrics();
+      const headerText = document.getElementById('header-progress-text');
+      const headerBar = document.getElementById('header-progress-bar');
+
+      if (headerText) headerText.textContent = `${m.overallPercent}%`;
+      if (headerBar) headerBar.style.width = `${m.overallPercent}%`;
+    }
+
+    function renderProgresDashboard() {
+      const m = calculateProgressMetrics();
+
+      document.getElementById('dash-overall-percent').textContent = `${m.overallPercent}%`;
+      document.getElementById('dash-overall-bar').style.width = `${m.overallPercent}%`;
+      document.getElementById('dash-materi-count').textContent = `${m.materiDone} / ${m.totalMateri}`;
+      document.getElementById('dash-attempted-count').textContent = `${m.attemptedCount} / ${m.totalQuestions}`;
+      document.getElementById('dash-correct-count').textContent = `${m.correctCount} Soal`;
+      document.getElementById('dash-latihan-score').textContent = `Nilai Latihan: ${m.latihanScore}`;
+
+      document.getElementById('dash-best-quiz').textContent = appState.bestQuizScore !== null ? `${appState.bestQuizScore}` : '-';
+      document.getElementById('dash-quiz-attempts').textContent = appState.quizAttempts > 0
+        ? `Dikerjakan ${appState.quizAttempts} kali`
+        : 'Belum pernah kuis';
+      // Per-shape breakdown with distinct per-shape colors
+      const breakdownEl = document.getElementById('dash-shapes-breakdown');
+      breakdownEl.innerHTML = SHAPES_DATA.map((shape, idx) => {
+        const theme = SHAPE_THEMES[shape.id] || SHAPE_THEMES.persegi;
+        const isMateriDone = appState.completedMateri.includes(shape.id);
+        const qs = QUESTIONS_DATA.filter(q => q.shapeId === shape.id);
+        const correct = qs.filter(q => appState.exerciseResults[q.id]?.isCorrect).length;
+        const pct = Math.round(((isMateriDone ? 1 : 0) * 50) + ((correct / 5) * 50));
+
+        return `
+          <div class="${theme.cardBg} rounded-2xl p-4 border-2 ${theme.border} flex flex-col justify-between gap-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 rounded-lg ${theme.badgeBg} font-display font-black text-xs flex items-center justify-center shadow-xs">${idx + 1}</span>
+                <span class="font-display font-black text-base text-slate-800">${shape.name}</span>
+              </div>
+              <span class="font-black text-xs px-2.5 py-0.5 rounded-full ${theme.softBadge}">${pct}%</span>
+            </div>
+
+            <div class="w-full h-2.5 bg-white rounded-full overflow-hidden border border-slate-200">
+              <div class="h-full bg-gradient-to-r ${theme.barGrad}" style="width: ${pct}%"></div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-extrabold ${isMateriDone ? 'text-emerald-600' : 'text-slate-500'}">
+                ${isMateriDone ? '✓ Materi Selesai' : '○ Materi Belum Selesai'}
+              </span>
+              <span class="font-extrabold text-indigo-800">
+                Latihan Benar: ${correct} / 5
+              </span>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    function openResetModal() {
+      document.getElementById('reset-modal').classList.remove('hidden');
+    }
+
+    function closeResetModal() {
+      document.getElementById('reset-modal').classList.add('hidden');
+    }
+
+    function confirmResetProgress() {
+      appState.completedMateri = [];
+      appState.exerciseResults = {};
+      appState.bestQuizScore = null;
+      appState.quizAttempts = 0;
+      saveState();
+      closeResetModal();
+      renderProgresDashboard();
+      showToast('Semua progres belajar berhasil di-reset ke 0%.', 'info');
+    }
+
+    // =========================================================================
+    // 11. INITIALIZE APPLICATION
+    // =========================================================================
+    window.addEventListener('DOMContentLoaded', () => {
+      loadState();
+      updateProgressUI();
+      navigateTo('home');
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
